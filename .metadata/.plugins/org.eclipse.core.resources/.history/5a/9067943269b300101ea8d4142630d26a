@@ -1,0 +1,20 @@
+#ifndef HTS221_H
+#define HTS221_H
+
+#include <stdint.h>
+#include <stdbool.h>
+
+#define HTS221_I2C_ADDR_7BIT   0x5F
+#define HTS221_WHO_AM_I_REG    0x0F
+#define HTS221_WHO_AM_I_VAL    0xBC
+
+/* init: config sensor + check WHO_AM_I */
+bool HTS221_Init(void);
+
+/* read temperature in °C */
+float HTS221_ReadTemperatureC(void);
+
+/* read humidity in %RH */
+float HTS221_ReadHumidityPerc(void);
+
+#endif

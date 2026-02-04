@@ -1,0 +1,26 @@
+#ifndef HTS221_H
+#define HTS221_H
+
+#include "stm32l4xx_hal.h"
+#include <stdint.h>
+
+/* Dirección 7-bit del HTS221 (datasheet) */
+#define HTS221_ADDR_7B      0x5F
+
+/* Registros clave */
+#define HTS221_REG_WHO_AM_I 0x0F
+#define HTS221_WHO_AM_I_VAL 0xBC
+#define HTS221_REG_CTRL1    0x20   /* PD(7), BDU(2), ODR[1:0] */
+
+typedef struct {
+  I2C_HandleTypeDef *hi2c;  /* ej: &hi2c1 */
+  uint8_t addr7b;           /* normalmente 0x5F */
+} HTS221_t;
+
+/* API mínima */
+HAL_StatusTypeDef HTS221_ReadWhoAmI(HTS221_t *d, uint8_t *who);
+HAL_StatusTypeDef HTS221_InitPowerOn(HTS221_t *d);          /* PD=1, BDU=1, ODR=1Hz */
+HAL_StatusTypeDef HTS221_ReadTemperatureDegC(HTS221_t *d, float *t_degC);
+HAL_StatusTypeDef HTS221_ReadHumidityRH(HTS221_t *d, float *rh);
+
+#endif /* HTS221_H */

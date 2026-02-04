@@ -1,0 +1,92 @@
+#include "hts221.h"
+
+/* ---- Registros de datos/calibración ---- */
+#define HTS221_REG_STATUS        0x27
+#define HTS221_REG_HUM_OUT_L     0x28
+#define HTS221_REG_HUM_OUT_H     0x29
+#define HTS221_REG_TEMP_OUT_L    0x2A
+#define HTS221_REG_TEMP_OUT_H    0x2B
+
+#define HTS221_REG_H0_rH_x2      0x30
+#define HTS221_REG_H1_rH_x2      0x31
+#define HTS221_REG_T0_degC_x8    0x32
+#define HTS221_REG_T1_degC_x8    0x33
+#define HTS221_REG_T1_T0_MSB     0x35
+#define HTS221_REG_H0_T0_OUT_L   0x36
+#define HTS221_REG_H0_T0_OUT_H   0x37
+#define HTS221_REG_H1_T0_OUT_L   0x3A
+#define HTS221_REG_H1_T0_OUT_H   0x3B
+#define HTS221_REG_T0_OUT_L      0x3C
+#define HTS221_REG_T0_OUT_H      0x3D
+#define HTS221_REG_T1_OUT_L      0x3E
+#define HTS221_REG_T1_OUT_H      0x3F
+
+/* Helpers */
+static HAL_StatusTypeDef _rd(HTS221_t *d, uint8_t reg, uint8_t *buf, uint16_t n){
+  return HAL_I2C_Mem_Read(d->hi2c, (d->addr7b<<1), reg, I2C_MEMADD_SIZE_8BIT, buf, n, 100);
+}
+static HAL_StatusTypeDef _wr_u8(HTS221_t *d, uint8_t reg, uint8_t val){
+  return HAL_I2C_Mem_Write(d->hi2c, (d->addr7b<<1), reg, I2C_MEMADD_SIZE_8BIT, &val, 1, 100);
+}
+static int16_t s16(uint8_t lo, uint8_t hi){ return (int16_t)((hi<<8) | lo); }
+
+/* API */
+HAL_StatusTypeDef HTS221_ReadWhoAmI(HTS221_t *d, uint8_t *who){
+  return _rd(d, HTS221_REG_WHO_AM_I, who, 1);
+}
+
+/* PD=1 (enciende), BDU=1, ODR=01 (~1 Hz) */
+HAL_StatusTypeDef HTS221_InitPowerOn(HTS221_t *d){
+  uint8_t who=0;
+  if (HTS221_ReadWhoAmI(d, &who)!=HAL_OK || who!=HTS221_WHO_AM_I_VAL) return HAL_ERROR;
+  uint8_t ctrl1 = (1u<<7) | (1u<<2) | (1u<<0);
+  HAL_StatusTypeDef st = _wr_u8(d, HTS221_REG_CTRL1, ctrl1);
+  if (st!=HAL_OK) return st;
+  HAL_Delay(5);
+  return HAL_OK;
+}
+
+HAL_StatusTypeDef HTS221_ReadTemperatureDegC(HTS221_t *d, float *t_degC){
+  uint8_t T0_l, T1_l, msb, buf[2];
+  if (_rd(d, HTS221_REG_T0_degC_x8, &T0_l, 1)!=HAL_OK) return HAL_ERROR;
+  if (_rd(d, HTS221_REG_T1_degC_x8, &T1_l, 1)!=HAL_OK) return HAL_ERROR;
+  if (_rd(d, HTS221_REG_T1_T0_MSB, &msb, 1)!=HAL_OK)   return HAL_ERROR;
+
+  uint16_t T0_x8 = ((msb & 0x03) << 8) | T0_l;   /* bits 1:0 */
+  uint16_t T1_x8 = ((msb & 0x0C) << 6) | T1_l;   /* bits 3:2 */
+  float T0 = T0_x8 / 8.0f;
+  float T1 = T1_x8 / 8.0f;
+
+  if (_rd(d, HTS221_REG_T0_OUT_L, buf, 2)!=HAL_OK) return HAL_ERROR;
+  int16_t T0_OUT = s16(buf[0], buf[1]);
+  if (_rd(d, HTS221_REG_T1_OUT_L, buf, 2)!=HAL_OK) return HAL_ERROR;
+  int16_t T1_OUT = s16(buf[0], buf[1]);
+
+  if (_rd(d, HTS221_REG_TEMP_OUT_L, buf, 2)!=HAL_OK) return HAL_ERROR;
+  int16_t T_OUT = s16(buf[0], buf[1]);
+
+  *t_degC = T0 + ((float)(T_OUT - T0_OUT) * (T1 - T0)) / (float)(T1_OUT - T0_OUT);
+  return HAL_OK;
+}
+
+HAL_StatusTypeDef HTS221_ReadHumidityRH(HTS221_t *d, float *rh){
+  uint8_t H0_x2, H1_x2, buf[2];
+  if (_rd(d, HTS221_REG_H0_rH_x2, &H0_x2, 1)!=HAL_OK) return HAL_ERROR;
+  if (_rd(d, HTS221_REG_H1_rH_x2, &H1_x2, 1)!=HAL_OK) return HAL_ERROR;
+  float H0 = H0_x2 / 2.0f;
+  float H1 = H1_x2 / 2.0f;
+
+  if (_rd(d, HTS221_REG_H0_T0_OUT_L, buf, 2)!=HAL_OK) return HAL_ERROR;
+  int16_t H0_OUT = s16(buf[0], buf[1]);
+  if (_rd(d, HTS221_REG_H1_T0_OUT_L, buf, 2)!=HAL_OK) return HAL_ERROR;
+  int16_t H1_OUT = s16(buf[0], buf[1]);
+
+  if (_rd(d, HTS221_REG_HUM_OUT_L, buf, 2)!=HAL_OK) return HAL_ERROR;
+  int16_t H_OUT = s16(buf[0], buf[1]);
+
+  float rh_lin = H0 + ((float)(H_OUT - H0_OUT) * (H1 - H0)) / (float)(H1_OUT - H0_OUT);
+  if (rh_lin < 0.0f)   rh_lin = 0.0f;
+  if (rh_lin > 100.0f) rh_lin = 100.0f;
+  *rh = rh_lin;
+  return HAL_OK;
+}

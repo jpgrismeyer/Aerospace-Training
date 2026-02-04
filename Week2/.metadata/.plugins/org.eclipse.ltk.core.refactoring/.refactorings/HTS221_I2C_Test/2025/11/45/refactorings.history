@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;HTS221_I2C_Test/Core/Src/hts221,c&apos; to &apos;hts221.c&apos;" description="Rename resource &apos;hts221,c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Core/Src/hts221,c" name="hts221.c" stamp="1762106519193" updateReferences="true"/>
+</session>

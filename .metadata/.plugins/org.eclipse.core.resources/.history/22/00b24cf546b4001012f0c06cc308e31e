@@ -1,0 +1,174 @@
+#include <stdint.h>
+#include "stm32l47xx.h"
+#include "stm32l475xx_gpio_driver.h"
+
+/*
+ * Vamos a usar directamente I2C2, que en tu mapa está en 0x40005800U.
+ * Ya tenés typedef I2C_RegDef_t en stm32l47xx.h
+ * Ya tenés macros RCC->APB1ENR1 etc.
+ *
+ * Te defino helpers estáticos locales:
+ */
+
+static void I2C2_GPIO_Init(void)
+{
+    // PB10 = I2C2_SCL (AF4)
+    // PB11 = I2C2_SDA (AF4)
+
+    GPIO_Handle_t pin;
+
+    // --- PB10 SCL ---
+    pin.pGPIOx = GPIOB;
+    pin.GPIO_PinConfig.GPIO_PinNumber      = 10;
+    pin.GPIO_PinConfig.GPIO_PinMode        = GPIO_MODE_ALTFN;   // Alternate function
+    pin.GPIO_PinConfig.GPIO_PinAltFunMode  = 4;                 // AF4 = I2C2
+    pin.GPIO_PinConfig.GPIO_PinOPType      = GPIO_OP_TYPE_OD;   // Open-drain
+    pin.GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_PIN_PU;       // Pull-up
+    pin.GPIO_PinConfig.GPIO_PinSpeed       = GPIO_SPEED_MED;    // Medium speed
+    GPIO_Init(&pin);
+
+    // --- PB11 SDA ---
+    pin.pGPIOx = GPIOB;
+    pin.GPIO_PinConfig.GPIO_PinNumber      = 11;
+    pin.GPIO_PinConfig.GPIO_PinMode        = GPIO_MODE_ALTFN;
+    pin.GPIO_PinConfig.GPIO_PinAltFunMode  = 4;                 // AF4 = I2C2
+    pin.GPIO_PinConfig.GPIO_PinOPType      = GPIO_OP_TYPE_OD;
+    pin.GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_PIN_PU;
+    pin.GPIO_PinConfig.GPIO_PinSpeed       = GPIO_SPEED_MED;
+    GPIO_Init(&pin);
+}
+
+void I2C2_Init(void)
+{
+    // 1. Habilitar clock de GPIOB (por si no está habilitado)
+    GPIOB_PCLK_EN();
+
+    // 2. Configurar PB10/PB11 para función alternativa I2C2
+    I2C2_GPIO_Init();
+
+    // 3. Habilitar clock de I2C2
+    I2C2_PCLK_EN();
+
+    // 4. Deshabilitar periférico antes de tocarlo
+    I2C2->CR1 &= ~(1 << I2C_CR1_PE);
+
+    // 5. Configurar filtros
+    I2C2->CR1 &= ~(1 << I2C_CR1_ANFOFF);          // filtro analógico on
+    I2C2->CR1 &= ~(0xF << I2C_CR1_DNF);           // sin filtro digital
+
+    // 6. Configurar velocidad en TIMINGR
+    // Esto asume kernel clock aprox 16MHz y target ~100kHz I2C.
+    // Es el mismo valor que estabas usando:
+    I2C2->TIMINGR = 0x00303D5B;
+
+    // 7. Clock stretching habilitado
+    I2C2->CR1 &= ~(1 << I2C_CR1_NOSTRETCH);
+
+    // 8. Habilitar periférico
+    I2C2->CR1 |= (1 << I2C_CR1_PE);
+}
+
+/*
+ * Funciones de transferencia blocking muy básicas:
+ */
+
+int I2C2_Write(uint8_t devAddr7, const uint8_t *data, uint32_t len)
+{
+    // Esperar BUSY=0
+    while (I2C2->ISR & (1 << I2C_ISR_BUSY));
+
+    // Limpiar CR2 (SADD, NBYTES, RD_WRN, AUTOEND, START,...)
+    I2C2->CR2 &= ~( 0x3FF                               // SADD[9:0]
+                  | (1 << I2C_CR2_RD_WRN)
+                  | (1 << I2C_CR2_ADD10)
+                  | (1 << I2C_CR2_HEAD10R)
+                  | (0xFF << I2C_CR2_NBYTES)
+                  | (1 << I2C_CR2_AUTOEND)
+                  | (1 << I2C_CR2_START)
+                  | (1 << I2C_CR2_STOP)
+                  );
+
+    // Armar nueva transacción write con STOP automático
+    uint32_t tmp = 0;
+    tmp |= (devAddr7 << I2C_CR2_SADD);            // dirección esclavo
+    // RD_WRN = 0 (escritura)
+    tmp |= (len << I2C_CR2_NBYTES);               // cuántos bytes voy a mandar
+    tmp |= (1 << I2C_CR2_AUTOEND);                // STOP auto al final
+    tmp |= (1 << I2C_CR2_START);                  // generar START
+    I2C2->CR2 |= tmp;
+
+    // Mandar los bytes
+    for (uint32_t i = 0; i < len; i++)
+    {
+        // Esperar TXIS (listo para enviar) o NACKF (falló)
+        while (!(I2C2->ISR & ((1 << I2C_ISR_TXIS) | (1 << I2C_ISR_NACKF))));
+
+        // Si recibimos NACK -> abortar
+        if (I2C2->ISR & (1 << I2C_ISR_NACKF)) {
+            I2C2->ICR |= (1 << I2C_ICR_NACKCF);
+            // Esperar STOP y limpiar
+            while (!(I2C2->ISR & (1 << I2C_ISR_STOPF)));
+            I2C2->ICR |= (1 << I2C_ICR_STOPCF);
+            return -1;
+        }
+
+        // Escribir el byte
+        I2C2->TXDR = data[i];
+    }
+
+    // Esperar STOPF de finalización
+    while (!(I2C2->ISR & (1 << I2C_ISR_STOPF)));
+    I2C2->ICR |= (1 << I2C_ICR_STOPCF);
+
+    return 0;
+}
+
+int I2C2_Read(uint8_t devAddr7, uint8_t *data, uint32_t len)
+{
+    // Esperar BUSY=0
+    while (I2C2->ISR & (1 << I2C_ISR_BUSY));
+
+    // Limpiar CR2
+    I2C2->CR2 &= ~( 0x3FF
+                  | (1 << I2C_CR2_RD_WRN)
+                  | (1 << I2C_CR2_ADD10)
+                  | (1 << I2C_CR2_HEAD10R)
+                  | (0xFF << I2C_CR2_NBYTES)
+                  | (1 << I2C_CR2_AUTOEND)
+                  | (1 << I2C_CR2_START)
+                  | (1 << I2C_CR2_STOP)
+                  );
+
+    // Armar lectura
+    uint32_t tmp = 0;
+    tmp |= (devAddr7 << I2C_CR2_SADD);
+    tmp |= (1 << I2C_CR2_RD_WRN);                 // RD_WRN=1 => read
+    tmp |= (len << I2C_CR2_NBYTES);
+    tmp |= (1 << I2C_CR2_AUTOEND);                // STOP al final
+    tmp |= (1 << I2C_CR2_START);                  // generate START
+    I2C2->CR2 |= tmp;
+
+    for (uint32_t i = 0; i < len; i++)
+    {
+        // Esperar RXNE (dato listo) o NACKF
+        while (!(I2C2->ISR & ((1 << I2C_ISR_RXNE) | (1 << I2C_ISR_NACKF))));
+
+        if (I2C2->ISR & (1 << I2C_ISR_NACKF)) {
+            I2C2->ICR |= (1 << I2C_ICR_NACKCF);
+            return -1;
+        }
+
+        data[i] = I2C2->RXDR;
+    }
+
+    // Esperar STOPF y limpiar
+    while (!(I2C2->ISR & (1 << I2C_ISR_STOPF)));
+    I2C2->ICR |= (1 << I2C_ICR_STOPCF);
+
+    return 0;
+}
+
+
+
+
+

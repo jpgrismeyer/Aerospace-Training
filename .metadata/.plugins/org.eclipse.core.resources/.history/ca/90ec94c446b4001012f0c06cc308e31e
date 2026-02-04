@@ -1,0 +1,75 @@
+#include <stdint.h>
+#include <stdbool.h>
+
+#include "stm32l47xx.h"
+#include "stm32l475xx_gpio_driver.h"
+#include "stm32l47xx_i2c_driver.h"   // este es el header que vos vas a crear p/ las funciones de arriba
+
+#define LED_GPIO_PORT   GPIOB
+#define LED_PIN         14
+
+#define HTS221_ADDR_7BIT  0x5F
+
+static void delay_busy(volatile uint32_t ticks)
+{
+    while (ticks--) {
+        _asm_("nop");
+    }
+}
+
+static void LED_Init_User(void)
+{
+    GPIO_Handle_t LedHandle;
+
+    LedHandle.pGPIOx = LED_GPIO_PORT;
+    LedHandle.GPIO_PinConfig.GPIO_PinNumber      = LED_PIN;
+    LedHandle.GPIO_PinConfig.GPIO_PinMode        = GPIO_MODE_OUT;
+    LedHandle.GPIO_PinConfig.GPIO_PinSpeed       = GPIO_SPEED_LOW;
+    LedHandle.GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_NO_PUPD;
+    LedHandle.GPIO_PinConfig.GPIO_PinOPType      = GPIO_OP_TYPE_PP;
+    LedHandle.GPIO_PinConfig.GPIO_PinAltFunMode  = 0;
+
+    GPIO_Init(&LedHandle);
+}
+
+static void blink_fast(void)
+{
+    GPIO_ToggleOutputPin(LED_GPIO_PORT, LED_PIN);
+    delay_busy(50000);
+}
+
+static void blink_slow(void)
+{
+    GPIO_ToggleOutputPin(LED_GPIO_PORT, LED_PIN);
+    delay_busy(300000);
+}
+
+int main(void)
+{
+    LED_Init_User();
+
+    // señal de arranque: tres blinks rápidos
+    for (int i = 0; i < 3; i++) {
+        blink_fast();
+        blink_fast();
+    }
+
+    I2C2_Init();
+
+    // probamos mandar un byte tonto (por ej. 0x00) al esclavo 0x5F
+    // En la práctica, si el esclavo responde ACK, I2C2_Write() devuelve 0.
+    // Si nadie contesta esa dirección, devuelve -1.
+    uint8_t dummy = 0x00;
+    int status = I2C2_Write(HTS221_ADDR_7BIT, &dummy, 1);
+
+    while (1)
+    {
+        if (status == 0) {
+            // OK: blink rápido continuo
+            blink_fast();
+        } else {
+            // FAIL/NACK: blink lento continuo
+            blink_slow();
+        }
+    }
+}

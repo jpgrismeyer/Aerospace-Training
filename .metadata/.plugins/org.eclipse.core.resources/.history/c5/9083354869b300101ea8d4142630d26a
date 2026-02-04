@@ -1,0 +1,28 @@
+#include "hts221.h"
+#include "i2c_lowlevel.h"
+
+bool HTS221_Init(void)
+{
+    uint8_t who = I2C2_ReadReg(HTS221_I2C_ADDR_7BIT, HTS221_WHO_AM_I_REG);
+    if (who == HTS221_WHO_AM_I_VAL) {
+        /* más config vendrá después (activar, avg config, etc.) */
+        return true;
+    }
+    return false;
+}
+
+float HTS221_ReadTemperatureC(void)
+{
+    /* mañana:
+       - leer registers TEMP_OUT_L / TEMP_OUT_H
+       - leer calib T0_degC, T1_degC, etc.
+       - interpolar
+    */
+    return 25.0f; /* placeholder */
+}
+
+float HTS221_ReadHumidityPerc(void)
+{
+    /* mañana igual que temp: usar calib H0_rH, H1_rH */
+    return 40.0f; /* placeholder */
+}

@@ -1,0 +1,1 @@
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -O2 -Wall -Wextra -ffunction-sections -fdata-sections src/main.c -T linker/STM32L475.ld -Wl,--gc-sections -Wl,-Map=app.map -o app.elf

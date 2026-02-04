@@ -1,0 +1,38 @@
+19:02:39 **** Incremental Build of configuration Debug for project Flight-Control-Telemetry-Errors ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartTelemetryTask':
+../Core/Src/main.c:756:70: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
+  756 |                                 altitude_meters = 44330.0f * (1.0f - powf(pressure_hPa / P_referencia, 0.1902949f));
+      |                                                                      ^~~~
+../Core/Src/main.c:96:1: note: include '<math.h>' or provide a declaration of 'powf'
+   95 | #include <stdio.h>
+  +++ |+#include <math.h>
+   96 | 
+../Core/Src/main.c:756:70: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
+  756 |                                 altitude_meters = 44330.0f * (1.0f - powf(pressure_hPa / P_referencia, 0.1902949f));
+      |                                                                      ^~~~
+../Core/Src/main.c:756:70: note: include '<math.h>' or provide a declaration of 'powf'
+../Core/Src/main.c:733:20: warning: unused variable 'press_int' [-Wunused-variable]
+  733 |           uint32_t press_int;
+      |                    ^~~~~~~~~
+../Core/Src/main.c:732:20: warning: unused variable 'final_press' [-Wunused-variable]
+  732 |           uint32_t final_press = 0;
+      |                    ^~~~~~~~~~~
+../Core/Src/main.c:730:17: warning: unused variable 'id_check' [-Wunused-variable]
+  730 |         uint8_t id_check = 0;
+      |                 ^~~~~~~~
+arm-none-eabi-gcc -o "Flight-Control-Telemetry-Errors.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\admin\Desktop\Aerospace_Training\Flight-Control-Telemetry-Errors\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Flight-Control-Telemetry-Errors.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Flight-Control-Telemetry-Errors.elf
+ 
+arm-none-eabi-size   Flight-Control-Telemetry-Errors.elf 
+arm-none-eabi-objdump -h -S  Flight-Control-Telemetry-Errors.elf  > "Flight-Control-Telemetry-Errors.list"
+   text	   data	    bss	    dec	    hex	filename
+  50152	    484	  10196	  60832	   eda0	Flight-Control-Telemetry-Errors.elf
+Finished building: default.size.stdout
+ 
+Finished building: Flight-Control-Telemetry-Errors.list
+ 
+
+19:02:41 Build Finished. 0 errors, 5 warnings. (took 1s.818ms)
+

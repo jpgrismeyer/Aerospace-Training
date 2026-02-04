@@ -1,0 +1,29 @@
+22:05:35 **** Incremental Build of configuration Debug for project RTOS Flight Control Logic - Task Scheduling and Vitals ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartTask_Telemetry':
+../Core/Src/main.c:792:25: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  792 |               int len = sprintf(msg, "FLIGHT_DATA: PITCH=%d°\r\n", received_angle);
+      |                         ^~~~~~~
+../Core/Src/main.c:22:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   21 | #include "cmsis_os.h"
+  +++ |+#include <stdio.h>
+   22 | 
+../Core/Src/main.c:792:25: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  792 |               int len = sprintf(msg, "FLIGHT_DATA: PITCH=%d°\r\n", received_angle);
+      |                         ^~~~~~~
+../Core/Src/main.c:792:25: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+arm-none-eabi-gcc -o "RTOS Flight Control Logic - Task Scheduling and Vitals.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\admin\Desktop\Aerospace_Training\RTOS Flight Control Logic - Task Scheduling and Vitals\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RTOS Flight Control Logic - Task Scheduling and Vitals.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: RTOS Flight Control Logic - Task Scheduling and Vitals.elf
+ 
+arm-none-eabi-size   RTOS\ Flight\ Control\ Logic\ -\ Task\ Scheduling\ and\ Vitals.elf 
+arm-none-eabi-objdump -h -S  RTOS\ Flight\ Control\ Logic\ -\ Task\ Scheduling\ and\ Vitals.elf  > "RTOS Flight Control Logic - Task Scheduling and Vitals.list"
+   text	   data	    bss	    dec	    hex	filename
+  36264	    104	  22640	  59008	   e680	RTOS Flight Control Logic - Task Scheduling and Vitals.elf
+Finished building: default.size.stdout
+ 
+Finished building: RTOS Flight Control Logic - Task Scheduling and Vitals.list
+ 
+
+22:05:37 Build Finished. 0 errors, 2 warnings. (took 2s.504ms)
+

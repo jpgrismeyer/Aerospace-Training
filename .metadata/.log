@@ -1,0 +1,516 @@
+!SESSION 2025-10-27 19:45:46.041 -----------------------------------------------
+eclipse.buildId=Version 1.13.2
+java.version=17.0.6
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_AR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-10-27 19:46:05.448
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-10-27 19:46:05.469
+!MESSAGE Log4j2 initialized with config file C:\Users\admin\Desktop\Aerospace_Training\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-10-27 19:46:11.047
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-10-27 19:49:39.179
+!MESSAGE Indexed 'HTS221_Demo' (3 sources, 53 headers) in 3.21 sec: 1,950 declarations; 2,832 references; 0 unresolved inclusions; 2 syntax errors; 2 unresolved names (0.042%)
+
+!ENTRY org.eclipse.ui.workbench 4 2 2025-10-27 20:16:02.211
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
+
+!ENTRY org.eclipse.osgi 4 0 2025-10-27 20:16:02.706
+!MESSAGE Application error
+
+!ENTRY org.eclipse.osgi 4 0 2025-10-27 20:16:02.710
+!MESSAGE Shutdown error
+!SESSION Mon Oct 27 20:16:02 CET 2025 ------------------------------------------
+!ENTRY org.eclipse.equinox.launcher 4 0 2025-10-27 20:16:02.713
+!MESSAGE Exception launching the Eclipse Platform:
+!STACK
+!SESSION 2025-10-27 20:17:11.310 -----------------------------------------------
+eclipse.buildId=Version 1.13.2
+java.version=17.0.6
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_AR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2025-10-27 20:17:24.372
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-10-27 20:17:53.798
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-10-27 20:17:53.800
+!MESSAGE Log4j2 initialized with config file C:\Users\admin\Desktop\Aerospace_Training\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-10-27 20:18:04.394
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.osgi 4 0 2025-10-27 20:20:22.136
+!MESSAGE Unable to extract content: osgi.identity; type="osgi.bundle"; version:Version="3.202.0.v20230214-1401"; osgi.identity="org.eclipse.ui"; singleton:="true": icons/full/obj16/workingsets.png
+
+!ENTRY org.eclipse.equinox.event 4 0 2025-10-27 20:20:22.193
+!MESSAGE Exception while dispatching event org.osgi.service.event.Event [topic=org/eclipse/e4/ui/model/ui/UIElement/widget/SET] {ChangedElement=org.eclipse.ui.navigator.ProjectExplorer=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@45900b64 (tags: [View, categoryTag:General], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@2c3f81ef, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=org.eclipse.ui.navigator.ProjectExplorer, properties=[], tags=[View, categoryTag:General], wrapped=class org.eclipse.ui.navigator.resources.ProjectExplorer, legacyPart=class org.eclipse.ui.navigator.resources.ProjectExplorer, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.ui.navigator.ProjectExplorer) Context, variables: [], label: Project Explorer, iconURI: platform:/plugin/org.eclipse.ui.navigator.resources/icons/full/eview16/resource_persp.png, tooltip: , dirty: false, closeable: true, description: null), Widget=null, org.eclipse.e4.data={ChangedElement=org.eclipse.ui.navigator.ProjectExplorer=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@45900b64 (tags: [View, categoryTag:General], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@2c3f81ef, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=org.eclipse.ui.navigator.ProjectExplorer, properties=[], tags=[View, categoryTag:General], wrapped=class org.eclipse.ui.navigator.resources.ProjectExplorer, legacyPart=class org.eclipse.ui.navigator.resources.ProjectExplorer, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.ui.navigator.ProjectExplorer) Context, variables: [], label: Project Explorer, iconURI: platform:/plugin/org.eclipse.ui.navigator.resources/icons/full/eview16/resource_persp.png, tooltip: , dirty: false, closeable: true, description: null), AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}], Widget=null}, AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}]} to handler org.eclipse.e4.ui.services.internal.events.UIEventHandler@7546be68
+
+!ENTRY org.eclipse.equinox.event 4 0 2025-10-27 20:20:22.222
+!MESSAGE Exception while dispatching event org.osgi.service.event.Event [topic=org/eclipse/e4/ui/model/ui/UIElement/widget/SET] {ChangedElement=org.eclipse.e4.ui.compatibility.editor=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@59c04bee (tags: [Editor, removeOnHide, org.eclipse.cdt.ui.editor.CEditor], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@2c3f81ef, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor, object: CompatibilityPart [partId=org.eclipse.e4.ui.compatibility.editor, properties=[], tags=[Editor, removeOnHide, org.eclipse.cdt.ui.editor.CEditor], wrapped=class org.eclipse.cdt.internal.ui.editor.CEditor, legacyPart=class org.eclipse.cdt.internal.ui.editor.CEditor, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.e4.ui.compatibility.editor)  removeOnHide org.eclipse.cdt.ui.editor.CEditor active (hts221.c) Context, variables: [], label: hts221.c, iconURI: platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif, tooltip: null, dirty: false, closeable: true, description: null), Widget=null, org.eclipse.e4.data={ChangedElement=org.eclipse.e4.ui.compatibility.editor=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@59c04bee (tags: [Editor, removeOnHide, org.eclipse.cdt.ui.editor.CEditor], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@2c3f81ef, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor, object: CompatibilityPart [partId=org.eclipse.e4.ui.compatibility.editor, properties=[], tags=[Editor, removeOnHide, org.eclipse.cdt.ui.editor.CEditor], wrapped=class org.eclipse.cdt.internal.ui.editor.CEditor, legacyPart=class org.eclipse.cdt.internal.ui.editor.CEditor, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.e4.ui.compatibility.editor)  removeOnHide org.eclipse.cdt.ui.editor.CEditor active (hts221.c) Context, variables: [], label: hts221.c, iconURI: platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif, tooltip: null, dirty: false, closeable: true, description: null), AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}], Widget=null}, AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}]} to handler org.eclipse.e4.ui.services.internal.events.UIEventHandler@ce1c5f3
+
+!ENTRY org.eclipse.equinox.event 4 0 2025-10-27 20:20:22.283
+!MESSAGE Exception while dispatching event org.osgi.service.event.Event [topic=org/eclipse/e4/ui/model/ui/UIElement/widget/SET] {ChangedElement=org.eclipse.e4.ui.compatibility.editor=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@2cd2fdd8 (tags: [Editor, removeOnHide, org.eclipse.cdt.ui.editor.CEditor, active], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@2c3f81ef, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor, object: CompatibilityPart [partId=org.eclipse.e4.ui.compatibility.editor, properties=[], tags=[Editor, removeOnHide, org.eclipse.cdt.ui.editor.CEditor, active], wrapped=class org.eclipse.cdt.internal.ui.editor.CEditor, legacyPart=class org.eclipse.cdt.internal.ui.editor.CEditor, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.e4.ui.compatibility.editor)  removeOnHide org.eclipse.cdt.ui.editor.CEditorContext, variables: [], label: main.c, iconURI: platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif, tooltip: null, dirty: false, closeable: true, description: null), Widget=null, org.eclipse.e4.data={ChangedElement=org.eclipse.e4.ui.compatibility.editor=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@2cd2fdd8 (tags: [Editor, removeOnHide, org.eclipse.cdt.ui.editor.CEditor, active], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@2c3f81ef, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor, object: CompatibilityPart [partId=org.eclipse.e4.ui.compatibility.editor, properties=[], tags=[Editor, removeOnHide, org.eclipse.cdt.ui.editor.CEditor, active], wrapped=class org.eclipse.cdt.internal.ui.editor.CEditor, legacyPart=class org.eclipse.cdt.internal.ui.editor.CEditor, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.e4.ui.compatibility.editor)  removeOnHide org.eclipse.cdt.ui.editor.CEditorContext, variables: [], label: main.c, iconURI: platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif, tooltip: null, dirty: false, closeable: true, description: null), AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}], Widget=null}, AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}]} to handler org.eclipse.e4.ui.services.internal.events.UIEventHandler@58c7bb01
+
+!ENTRY org.eclipse.equinox.event 4 0 2025-10-27 20:20:22.325
+!MESSAGE Exception while dispatching event org.osgi.service.event.Event [topic=org/eclipse/e4/ui/model/ui/UIElement/widget/SET] {ChangedElement=org.eclipse.ui.views.ContentOutline=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@1b01a0d (tags: [View, categoryTag:General], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@2c3f81ef, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=org.eclipse.ui.views.ContentOutline, properties=[], tags=[View, categoryTag:General], wrapped=class org.eclipse.ui.views.contentoutline.ContentOutline, legacyPart=class org.eclipse.ui.views.contentoutline.ContentOutline, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.ui.views.ContentOutline) Context, variables: [], label: Outline, iconURI: platform:/plugin/org.eclipse.ui.views/icons/full/eview16/outline_co.png, tooltip: , dirty: false, closeable: true, description: null), Widget=null, org.eclipse.e4.data={ChangedElement=org.eclipse.ui.views.ContentOutline=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@1b01a0d (tags: [View, categoryTag:General], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@2c3f81ef, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=org.eclipse.ui.views.ContentOutline, properties=[], tags=[View, categoryTag:General], wrapped=class org.eclipse.ui.views.contentoutline.ContentOutline, legacyPart=class org.eclipse.ui.views.contentoutline.ContentOutline, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.ui.views.ContentOutline) Context, variables: [], label: Outline, iconURI: platform:/plugin/org.eclipse.ui.views/icons/full/eview16/outline_co.png, tooltip: , dirty: false, closeable: true, description: null), AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}], Widget=null}, AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}]} to handler org.eclipse.e4.ui.services.internal.events.UIEventHandler@255d68d5
+
+!ENTRY org.eclipse.equinox.event 4 0 2025-10-27 20:20:22.334
+!MESSAGE Exception while dispatching event org.osgi.service.event.Event [topic=org/eclipse/e4/ui/model/ui/UIElement/widget/SET] {ChangedElement=org.eclipse.cdt.make.ui.views.MakeView=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@64da6cbd (tags: [View, categoryTag:Make], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@2c3f81ef, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=org.eclipse.cdt.make.ui.views.MakeView, properties=[], tags=[View, categoryTag:Make], wrapped=class org.eclipse.cdt.make.ui.views.MakeView, legacyPart=class org.eclipse.cdt.make.ui.views.MakeView, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.cdt.make.ui.views.MakeView) Context, variables: [], label: Build Targets, iconURI: platform:/plugin/org.eclipse.cdt.make.ui/icons/view16/make_target.gif, tooltip: , dirty: false, closeable: true, description: null), Widget=null, org.eclipse.e4.data={ChangedElement=org.eclipse.cdt.make.ui.views.MakeView=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@64da6cbd (tags: [View, categoryTag:Make], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@2c3f81ef, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=org.eclipse.cdt.make.ui.views.MakeView, properties=[], tags=[View, categoryTag:Make], wrapped=class org.eclipse.cdt.make.ui.views.MakeView, legacyPart=class org.eclipse.cdt.make.ui.views.MakeView, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.cdt.make.ui.views.MakeView) Context, variables: [], label: Build Targets, iconURI: platform:/plugin/org.eclipse.cdt.make.ui/icons/view16/make_target.gif, tooltip: , dirty: false, closeable: true, description: null), AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}], Widget=null}, AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}]} to handler org.eclipse.e4.ui.services.internal.events.UIEventHandler@66403e2c
+
+!ENTRY org.eclipse.equinox.event 4 0 2025-10-27 20:20:22.340
+!MESSAGE Exception while dispatching event org.osgi.service.event.Event [topic=org/eclipse/e4/ui/model/ui/UIElement/widget/SET] {ChangedElement=org.eclipse.ui.views.ProblemView=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@388623ad (tags: [View, categoryTag:General], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@2c3f81ef, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=org.eclipse.ui.views.ProblemView, properties=[], tags=[View, categoryTag:General], wrapped=class org.eclipse.ui.internal.views.markers.ProblemsView, legacyPart=class org.eclipse.ui.internal.views.markers.ProblemsView, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.ui.views.ProblemView) Context, variables: [], label: Problems, iconURI: platform:/plugin/org.eclipse.ui.ide/icons/full/eview16/problems_view.png, tooltip: , dirty: false, closeable: true, description: null), Widget=null, org.eclipse.e4.data={ChangedElement=org.eclipse.ui.views.ProblemView=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@388623ad (tags: [View, categoryTag:General], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@2c3f81ef, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=org.eclipse.ui.views.ProblemView, properties=[], tags=[View, categoryTag:General], wrapped=class org.eclipse.ui.internal.views.markers.ProblemsView, legacyPart=class org.eclipse.ui.internal.views.markers.ProblemsView, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.ui.views.ProblemView) Context, variables: [], label: Problems, iconURI: platform:/plugin/org.eclipse.ui.ide/icons/full/eview16/problems_view.png, tooltip: , dirty: false, closeable: true, description: null), AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer$2@6314b195], Widget=null}, AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer$2@6314b195]} to handler org.eclipse.e4.ui.services.internal.events.UIEventHandler@4424285
+
+!ENTRY org.eclipse.equinox.event 4 0 2025-10-27 20:20:22.348
+!MESSAGE Exception while dispatching event org.osgi.service.event.Event [topic=org/eclipse/e4/ui/model/ui/UIElement/widget/SET] {ChangedElement=org.eclipse.ui.views.TaskList=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@3b83459e (tags: [View, categoryTag:General], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@2c3f81ef, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=org.eclipse.ui.views.TaskList, properties=[], tags=[View, categoryTag:General], wrapped=class org.eclipse.ui.internal.views.markers.TasksView, legacyPart=class org.eclipse.ui.internal.views.markers.TasksView, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.ui.views.TaskList) Context, variables: [], label: Tasks, iconURI: platform:/plugin/org.eclipse.ui.ide/icons/full/eview16/tasks_tsk.png, tooltip: , dirty: false, closeable: true, description: null), Widget=null, org.eclipse.e4.data={ChangedElement=org.eclipse.ui.views.TaskList=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@3b83459e (tags: [View, categoryTag:General], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@2c3f81ef, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=org.eclipse.ui.views.TaskList, properties=[], tags=[View, categoryTag:General], wrapped=class org.eclipse.ui.internal.views.markers.TasksView, legacyPart=class org.eclipse.ui.internal.views.markers.TasksView, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.ui.views.TaskList) Context, variables: [], label: Tasks, iconURI: platform:/plugin/org.eclipse.ui.ide/icons/full/eview16/tasks_tsk.png, tooltip: , dirty: false, closeable: true, description: null), AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer$2@65a022e6], Widget=null}, AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer$2@65a022e6]} to handler org.eclipse.e4.ui.services.internal.events.UIEventHandler@3d731475
+
+!ENTRY org.eclipse.equinox.event 4 0 2025-10-27 20:20:22.355
+!MESSAGE Exception while dispatching event org.osgi.service.event.Event [topic=org/eclipse/e4/ui/model/ui/UIElement/widget/SET] {ChangedElement=org.eclipse.ui.console.ConsoleView=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@1ddc6db2 (tags: [View, categoryTag:General], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@2c3f81ef, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=org.eclipse.ui.console.ConsoleView, properties=[], tags=[View, categoryTag:General], wrapped=class org.eclipse.ui.internal.console.ConsoleView, legacyPart=class org.eclipse.ui.internal.console.ConsoleView, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.ui.console.ConsoleView) Context, variables: [], label: Console, iconURI: platform:/plugin/org.eclipse.ui.console/icons/full/cview16/console_view.png, tooltip: , dirty: false, closeable: true, description: null), Widget=null, org.eclipse.e4.data={ChangedElement=org.eclipse.ui.console.ConsoleView=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@1ddc6db2 (tags: [View, categoryTag:General], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@2c3f81ef, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=org.eclipse.ui.console.ConsoleView, properties=[], tags=[View, categoryTag:General], wrapped=class org.eclipse.ui.internal.console.ConsoleView, legacyPart=class org.eclipse.ui.internal.console.ConsoleView, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.ui.console.ConsoleView) Context, variables: [], label: Console, iconURI: platform:/plugin/org.eclipse.ui.console/icons/full/cview16/console_view.png, tooltip: , dirty: false, closeable: true, description: null), AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer$2@7bad8257], Widget=null}, AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer$2@7bad8257]} to handler org.eclipse.e4.ui.services.internal.events.UIEventHandler@6deda1cd
+
+!ENTRY org.eclipse.equinox.event 4 0 2025-10-27 20:20:22.361
+!MESSAGE Exception while dispatching event org.osgi.service.event.Event [topic=org/eclipse/e4/ui/model/ui/UIElement/widget/SET] {ChangedElement=org.eclipse.ui.views.PropertySheet=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@3fa21d49 (tags: [View, categoryTag:General], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@2c3f81ef, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=org.eclipse.ui.views.PropertySheet, properties=[], tags=[View, categoryTag:General], wrapped=class org.eclipse.ui.views.properties.PropertySheet, legacyPart=class org.eclipse.ui.views.properties.PropertySheet, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.ui.views.PropertySheet) Context, variables: [], label: Properties, iconURI: platform:/plugin/org.eclipse.ui.views/icons/full/eview16/prop_ps.png, tooltip: , dirty: false, closeable: true, description: null), Widget=null, org.eclipse.e4.data={ChangedElement=org.eclipse.ui.views.PropertySheet=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@3fa21d49 (tags: [View, categoryTag:General], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@2c3f81ef, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=org.eclipse.ui.views.PropertySheet, properties=[], tags=[View, categoryTag:General], wrapped=class org.eclipse.ui.views.properties.PropertySheet, legacyPart=class org.eclipse.ui.views.properties.PropertySheet, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.ui.views.PropertySheet) Context, variables: [], label: Properties, iconURI: platform:/plugin/org.eclipse.ui.views/icons/full/eview16/prop_ps.png, tooltip: , dirty: false, closeable: true, description: null), AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}], Widget=null}, AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}]} to handler org.eclipse.e4.ui.services.internal.events.UIEventHandler@9be1984
+
+!ENTRY org.eclipse.equinox.event 4 0 2025-10-27 20:20:22.368
+!MESSAGE Exception while dispatching event org.osgi.service.event.Event [topic=org/eclipse/e4/ui/model/ui/UIElement/widget/SET] {ChangedElement=com.st.stm32cube.ide.mcu.buildanalyzer.view=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@7951c3a2 (tags: [View, categoryTag:C/C++], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@2c3f81ef, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=com.st.stm32cube.ide.mcu.buildanalyzer.view, properties=[], tags=[View, categoryTag:C/C++], wrapped=class elf_analyzer.ElfAnalyzerView, legacyPart=class elf_analyzer.ElfAnalyzerView, beingDisposed=true, alreadyDisposed=false], context: PartImpl (com.st.stm32cube.ide.mcu.buildanalyzer.view) Context, variables: [], label: Build Analyzer, iconURI: platform:/plugin/com.st.stm32cube.ide.mcu.buildanalyzer/icons/view_icon.gif, tooltip: , dirty: false, closeable: true, description: null), Widget=null, org.eclipse.e4.data={ChangedElement=com.st.stm32cube.ide.mcu.buildanalyzer.view=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@7951c3a2 (tags: [View, categoryTag:C/C++], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@2c3f81ef, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=com.st.stm32cube.ide.mcu.buildanalyzer.view, properties=[], tags=[View, categoryTag:C/C++], wrapped=class elf_analyzer.ElfAnalyzerView, legacyPart=class elf_analyzer.ElfAnalyzerView, beingDisposed=true, alreadyDisposed=false], context: PartImpl (com.st.stm32cube.ide.mcu.buildanalyzer.view) Context, variables: [], label: Build Analyzer, iconURI: platform:/plugin/com.st.stm32cube.ide.mcu.buildanalyzer/icons/view_icon.gif, tooltip: , dirty: false, closeable: true, description: null), AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}], Widget=null}, AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}]} to handler org.eclipse.e4.ui.services.internal.events.UIEventHandler@3b00c9f6
+
+!ENTRY org.eclipse.equinox.event 4 0 2025-10-27 20:20:22.373
+!MESSAGE Exception while dispatching event org.osgi.service.event.Event [topic=org/eclipse/e4/ui/model/ui/UIElement/widget/SET] {ChangedElement=com.st.stm32cube.ide.mcu.stackanalyzer.stackanalyzer.view=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@57e388c3 (tags: [View, categoryTag:C/C++], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@2c3f81ef, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=com.st.stm32cube.ide.mcu.stackanalyzer.stackanalyzer.view, properties=[], tags=[View, categoryTag:C/C++], wrapped=class com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView, legacyPart=class com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView, beingDisposed=true, alreadyDisposed=false], context: PartImpl (com.st.stm32cube.ide.mcu.stackanalyzer.stackanalyzer.view) Context, variables: [], label: Static Stack Analyzer, iconURI: platform:/plugin/com.st.stm32cube.ide.mcu.stackanalyzer/icons/view_icon.gif, tooltip: , dirty: false, closeable: true, description: null), Widget=null, org.eclipse.e4.data={ChangedElement=com.st.stm32cube.ide.mcu.stackanalyzer.stackanalyzer.view=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@57e388c3 (tags: [View, categoryTag:C/C++], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@2c3f81ef, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=com.st.stm32cube.ide.mcu.stackanalyzer.stackanalyzer.view, properties=[], tags=[View, categoryTag:C/C++], wrapped=class com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView, legacyPart=class com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView, beingDisposed=true, alreadyDisposed=false], context: PartImpl (com.st.stm32cube.ide.mcu.stackanalyzer.stackanalyzer.view) Context, variables: [], label: Static Stack Analyzer, iconURI: platform:/plugin/com.st.stm32cube.ide.mcu.stackanalyzer/icons/view_icon.gif, tooltip: , dirty: false, closeable: true, description: null), AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}], Widget=null}, AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}]} to handler org.eclipse.e4.ui.services.internal.events.UIEventHandler@428b852b
+
+!ENTRY org.eclipse.equinox.event 4 0 2025-10-27 20:20:22.378
+!MESSAGE Exception while dispatching event org.osgi.service.event.Event [topic=org/eclipse/e4/ui/model/ui/UIElement/widget/SET] {ChangedElement=com.st.stm32cube.ide.mcu.cyclomaticcomplexity.view=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@2d0b05 (tags: [View, categoryTag:C/C++], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@2c3f81ef, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=com.st.stm32cube.ide.mcu.cyclomaticcomplexity.view, properties=[], tags=[View, categoryTag:C/C++], wrapped=class com.st.stm32cube.ide.mcu.cyclomaticcomplexity.CyclomaticView, legacyPart=class com.st.stm32cube.ide.mcu.cyclomaticcomplexity.CyclomaticView, beingDisposed=true, alreadyDisposed=false], context: PartImpl (com.st.stm32cube.ide.mcu.cyclomaticcomplexity.view) Context, variables: [], label: Cyclomatic Complexity, iconURI: platform:/plugin/com.st.stm32cube.ide.mcu.cyclomaticcomplexity/icons/algorithm.png, tooltip: , dirty: false, closeable: true, description: null), Widget=null, org.eclipse.e4.data={ChangedElement=com.st.stm32cube.ide.mcu.cyclomaticcomplexity.view=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@2d0b05 (tags: [View, categoryTag:C/C++], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@2c3f81ef, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=com.st.stm32cube.ide.mcu.cyclomaticcomplexity.view, properties=[], tags=[View, categoryTag:C/C++], wrapped=class com.st.stm32cube.ide.mcu.cyclomaticcomplexity.CyclomaticView, legacyPart=class com.st.stm32cube.ide.mcu.cyclomaticcomplexity.CyclomaticView, beingDisposed=true, alreadyDisposed=false], context: PartImpl (com.st.stm32cube.ide.mcu.cyclomaticcomplexity.view) Context, variables: [], label: Cyclomatic Complexity, iconURI: platform:/plugin/com.st.stm32cube.ide.mcu.cyclomaticcomplexity/icons/algorithm.png, tooltip: , dirty: false, closeable: true, description: null), AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}], Widget=null}, AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}]} to handler org.eclipse.e4.ui.services.internal.events.UIEventHandler@3514d1a4
+
+!ENTRY org.eclipse.osgi 4 0 2025-10-27 20:20:22.522
+!MESSAGE Application error
+
+!ENTRY org.eclipse.osgi 4 0 2025-10-27 20:20:22.527
+!MESSAGE Shutdown error
+!SESSION Mon Oct 27 20:20:22 CET 2025 ------------------------------------------
+!ENTRY org.eclipse.equinox.launcher 4 0 2025-10-27 20:20:22.529
+!MESSAGE Exception launching the Eclipse Platform:
+!STACK
+!SESSION 2025-10-27 20:21:10.166 -----------------------------------------------
+eclipse.buildId=Version 1.13.2
+java.version=17.0.6
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_AR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2025-10-27 20:21:21.446
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-10-27 20:21:51.313
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-10-27 20:21:51.315
+!MESSAGE Log4j2 initialized with config file C:\Users\admin\Desktop\Aerospace_Training\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-10-27 20:22:01.175
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2025-10-27 20:22:22.843
+!MESSAGE Won't launch debug session since we failed to locate the binary.
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2025-10-27 20:26:45.728
+!MESSAGE Won't launch debug session since we failed to locate the binary.
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2025-10-27 20:27:30.041
+!MESSAGE Won't launch debug session since we failed to locate the binary.
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2025-10-27 20:28:43.792
+!MESSAGE Won't launch debug session since we failed to locate the binary.
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2025-10-27 20:29:01.165
+!MESSAGE Won't launch debug session since we failed to locate the binary.
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2025-10-27 20:30:29.192
+!MESSAGE Won't launch debug session since we failed to locate the binary.
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2025-10-27 21:32:43.225
+!MESSAGE Won't launch debug session since we failed to locate the binary.
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2025-10-27 21:36:48.444
+!MESSAGE Won't launch debug session since we failed to locate the binary.
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 104 2025-10-27 21:56:32.109
+!MESSAGE Program file does not exist
+!STACK 0
+java.io.FileNotFoundException: C:\Users\admin\Desktop\Aerospace_Training\HTS221_Demo\Debug\HTS221_Demo.elf not found
+	at org.eclipse.cdt.dsf.gdb.launching.LaunchUtils.verifyProgramPath(LaunchUtils.java:130)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.checkBinaryDetails(GdbLaunchDelegate.java:330)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:152)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:109)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launch(GdbLaunchDelegate.java:97)
+	at com.st.stm32cube.ide.mcu.debug.launch.DSFDelegate.launch(DSFDelegate.java:334)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:806)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:717)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1040)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1.run(DebugUIPlugin.java:1243)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 104 2025-10-27 21:56:32.110
+!MESSAGE C:\Users\admin\Desktop\Aerospace_Training\HTS221_Demo\Debug\HTS221_Demo.elf not found
+!STACK 0
+java.io.FileNotFoundException: C:\Users\admin\Desktop\Aerospace_Training\HTS221_Demo\Debug\HTS221_Demo.elf not found
+	at org.eclipse.cdt.dsf.gdb.launching.LaunchUtils.verifyProgramPath(LaunchUtils.java:130)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.checkBinaryDetails(GdbLaunchDelegate.java:330)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:152)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:109)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launch(GdbLaunchDelegate.java:97)
+	at com.st.stm32cube.ide.mcu.debug.launch.DSFDelegate.launch(DSFDelegate.java:334)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:806)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:717)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1040)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1.run(DebugUIPlugin.java:1243)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 104 2025-10-27 21:59:17.629
+!MESSAGE Program file does not exist
+!STACK 0
+java.io.FileNotFoundException: C:\Users\admin\Desktop\Aerospace_Training\HTS221_Demo\Debug\HTS221_Demo.elf not found
+	at org.eclipse.cdt.dsf.gdb.launching.LaunchUtils.verifyProgramPath(LaunchUtils.java:130)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.checkBinaryDetails(GdbLaunchDelegate.java:330)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:152)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:109)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launch(GdbLaunchDelegate.java:97)
+	at com.st.stm32cube.ide.mcu.debug.launch.DSFDelegate.launch(DSFDelegate.java:334)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:806)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:717)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1040)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1.run(DebugUIPlugin.java:1243)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 104 2025-10-27 21:59:17.629
+!MESSAGE C:\Users\admin\Desktop\Aerospace_Training\HTS221_Demo\Debug\HTS221_Demo.elf not found
+!STACK 0
+java.io.FileNotFoundException: C:\Users\admin\Desktop\Aerospace_Training\HTS221_Demo\Debug\HTS221_Demo.elf not found
+	at org.eclipse.cdt.dsf.gdb.launching.LaunchUtils.verifyProgramPath(LaunchUtils.java:130)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.checkBinaryDetails(GdbLaunchDelegate.java:330)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:152)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:109)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launch(GdbLaunchDelegate.java:97)
+	at com.st.stm32cube.ide.mcu.debug.launch.DSFDelegate.launch(DSFDelegate.java:334)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:806)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:717)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1040)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1.run(DebugUIPlugin.java:1243)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 104 2025-10-27 22:02:31.345
+!MESSAGE Program file does not exist
+!STACK 0
+java.io.FileNotFoundException: C:\Users\admin\Desktop\Aerospace_Training\HTS221_Demo\Debug\HTS221_Demo.elf not found
+	at org.eclipse.cdt.dsf.gdb.launching.LaunchUtils.verifyProgramPath(LaunchUtils.java:130)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.checkBinaryDetails(GdbLaunchDelegate.java:330)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:152)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:109)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launch(GdbLaunchDelegate.java:97)
+	at com.st.stm32cube.ide.mcu.debug.launch.DSFDelegate.launch(DSFDelegate.java:334)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:806)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:717)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1040)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1.run(DebugUIPlugin.java:1243)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 104 2025-10-27 22:02:31.345
+!MESSAGE C:\Users\admin\Desktop\Aerospace_Training\HTS221_Demo\Debug\HTS221_Demo.elf not found
+!STACK 0
+java.io.FileNotFoundException: C:\Users\admin\Desktop\Aerospace_Training\HTS221_Demo\Debug\HTS221_Demo.elf not found
+	at org.eclipse.cdt.dsf.gdb.launching.LaunchUtils.verifyProgramPath(LaunchUtils.java:130)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.checkBinaryDetails(GdbLaunchDelegate.java:330)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:152)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:109)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launch(GdbLaunchDelegate.java:97)
+	at com.st.stm32cube.ide.mcu.debug.launch.DSFDelegate.launch(DSFDelegate.java:334)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:806)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:717)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1040)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1.run(DebugUIPlugin.java:1243)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2025-10-27 22:03:15.351
+!MESSAGE Won't launch debug session since we failed to locate the binary.
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2025-10-27 22:03:34.969
+!MESSAGE Won't launch debug session since we failed to locate the binary.
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2025-10-27 22:06:04.634
+!MESSAGE Won't launch debug session since we failed to locate the binary.
+!SESSION 2025-10-28 21:02:20.570 -----------------------------------------------
+eclipse.buildId=Version 1.13.2
+java.version=17.0.6
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_AR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-10-28 21:03:23.611
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-10-28 21:03:23.629
+!MESSAGE Log4j2 initialized with config file C:\Users\admin\Desktop\Aerospace_Training\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-10-28 21:03:36.416
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2025-10-28 21:04:09.681
+!MESSAGE FrameworkEvent ERROR
+
+!ENTRY org.eclipse.ui.workbench 4 2 2025-10-28 21:04:09.683
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
+
+!ENTRY org.eclipse.core.jobs 4 2 2025-10-28 21:04:09.700
+!MESSAGE Unhandled error
+
+!ENTRY org.eclipse.e4.ui.workbench.swt 4 2 2025-10-28 21:04:11.149
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.e4.ui.workbench.swt".
+
+!ENTRY org.eclipse.equinox.event 4 0 2025-10-28 21:04:11.168
+!MESSAGE Exception while dispatching event org.osgi.service.event.Event [topic=org/eclipse/e4/ui/model/ui/UIElement/widget/SET] {ChangedElement=IDEWindow=org.eclipse.e4.ui.model.application.ui.basic.impl.TrimmedWindowImpl@fe87ddd (tags: [topLevel, shellMaximized], contributorURI: platform:/plugin/org.eclipse.ui.workbench) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer@117069f2, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (label: null, iconURI: null, tooltip: null, context: TrimmedWindowImpl (IDEWindow) Context, variables: [], x: 113, y: 31, width: 1024, height: 768), Widget=null, org.eclipse.e4.data={ChangedElement=IDEWindow=org.eclipse.e4.ui.model.application.ui.basic.impl.TrimmedWindowImpl@fe87ddd (tags: [topLevel, shellMaximized], contributorURI: platform:/plugin/org.eclipse.ui.workbench) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer@117069f2, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (label: null, iconURI: null, tooltip: null, context: TrimmedWindowImpl (IDEWindow) Context, variables: [], x: 113, y: 31, width: 1024, height: 768), AttName=widget, EventType=SET, OldValue=Shell {Aerospace_Training - HTS221_Demo/Src/main.c - STM32CubeIDE} [layout=org.eclipse.e4.ui.workbench.renderers.swt.TrimmedPartLayout@3bf8feec], Widget=null}, AttName=widget, EventType=SET, OldValue=Shell {Aerospace_Training - HTS221_Demo/Src/main.c - STM32CubeIDE} [layout=org.eclipse.e4.ui.workbench.renderers.swt.TrimmedPartLayout@3bf8feec]} to handler org.eclipse.e4.ui.services.internal.events.UIEventHandler@486e3116
+
+!ENTRY org.eclipse.equinox.event 4 0 2025-10-28 21:04:11.199
+!MESSAGE Exception while dispatching event org.osgi.service.event.Event [topic=org/eclipse/e4/ui/model/ui/UIElement/widget/SET] {ChangedElement=org.eclipse.ui.navigator.ProjectExplorer=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@3cd26422 (tags: [View, categoryTag:General, active], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@119f035f, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=org.eclipse.ui.navigator.ProjectExplorer, properties=[], tags=[View, categoryTag:General, active], wrapped=class org.eclipse.ui.navigator.resources.ProjectExplorer, legacyPart=class org.eclipse.ui.navigator.resources.ProjectExplorer, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.ui.navigator.ProjectExplorer) Context, variables: [], label: Project Explorer, iconURI: platform:/plugin/org.eclipse.ui.navigator.resources/icons/full/eview16/resource_persp.png, tooltip: , dirty: false, closeable: true, description: null), Widget=null, org.eclipse.e4.data={ChangedElement=org.eclipse.ui.navigator.ProjectExplorer=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@3cd26422 (tags: [View, categoryTag:General, active], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@119f035f, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=org.eclipse.ui.navigator.ProjectExplorer, properties=[], tags=[View, categoryTag:General, active], wrapped=class org.eclipse.ui.navigator.resources.ProjectExplorer, legacyPart=class org.eclipse.ui.navigator.resources.ProjectExplorer, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.ui.navigator.ProjectExplorer) Context, variables: [], label: Project Explorer, iconURI: platform:/plugin/org.eclipse.ui.navigator.resources/icons/full/eview16/resource_persp.png, tooltip: , dirty: false, closeable: true, description: null), AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}], Widget=null}, AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}]} to handler org.eclipse.e4.ui.services.internal.events.UIEventHandler@221b4175
+
+!ENTRY org.eclipse.equinox.event 4 0 2025-10-28 21:04:11.265
+!MESSAGE Exception while dispatching event org.osgi.service.event.Event [topic=org/eclipse/e4/ui/model/ui/UIElement/widget/SET] {ChangedElement=org.eclipse.e4.ui.compatibility.editor=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@91f565d (tags: [Editor, removeOnHide, org.eclipse.cdt.ui.editor.CEditor], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@119f035f, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor, object: CompatibilityPart [partId=org.eclipse.e4.ui.compatibility.editor, properties=[], tags=[Editor, removeOnHide, org.eclipse.cdt.ui.editor.CEditor], wrapped=class org.eclipse.cdt.internal.ui.editor.CEditor, legacyPart=class org.eclipse.cdt.internal.ui.editor.CEditor, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.e4.ui.compatibility.editor)  removeOnHide org.eclipse.cdt.ui.editor.CEditor active activeOnClose (main.c) Context, variables: [], label: main.c, iconURI: platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif, tooltip: null, dirty: false, closeable: true, description: null), Widget=null, org.eclipse.e4.data={ChangedElement=org.eclipse.e4.ui.compatibility.editor=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@91f565d (tags: [Editor, removeOnHide, org.eclipse.cdt.ui.editor.CEditor], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@119f035f, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor, object: CompatibilityPart [partId=org.eclipse.e4.ui.compatibility.editor, properties=[], tags=[Editor, removeOnHide, org.eclipse.cdt.ui.editor.CEditor], wrapped=class org.eclipse.cdt.internal.ui.editor.CEditor, legacyPart=class org.eclipse.cdt.internal.ui.editor.CEditor, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.e4.ui.compatibility.editor)  removeOnHide org.eclipse.cdt.ui.editor.CEditor active activeOnClose (main.c) Context, variables: [], label: main.c, iconURI: platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif, tooltip: null, dirty: false, closeable: true, description: null), AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}], Widget=null}, AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}]} to handler org.eclipse.e4.ui.services.internal.events.UIEventHandler@3f937c0e
+
+!ENTRY org.eclipse.equinox.event 4 0 2025-10-28 21:04:11.327
+!MESSAGE Exception while dispatching event org.osgi.service.event.Event [topic=org/eclipse/e4/ui/model/ui/UIElement/widget/SET] {ChangedElement=org.eclipse.ui.views.ContentOutline=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@21bd128b (tags: [View, categoryTag:General], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@119f035f, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=org.eclipse.ui.views.ContentOutline, properties=[], tags=[View, categoryTag:General], wrapped=class org.eclipse.ui.views.contentoutline.ContentOutline, legacyPart=class org.eclipse.ui.views.contentoutline.ContentOutline, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.ui.views.ContentOutline) Context, variables: [], label: Outline, iconURI: platform:/plugin/org.eclipse.ui.views/icons/full/eview16/outline_co.png, tooltip: , dirty: false, closeable: true, description: null), Widget=null, org.eclipse.e4.data={ChangedElement=org.eclipse.ui.views.ContentOutline=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@21bd128b (tags: [View, categoryTag:General], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@119f035f, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=org.eclipse.ui.views.ContentOutline, properties=[], tags=[View, categoryTag:General], wrapped=class org.eclipse.ui.views.contentoutline.ContentOutline, legacyPart=class org.eclipse.ui.views.contentoutline.ContentOutline, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.ui.views.ContentOutline) Context, variables: [], label: Outline, iconURI: platform:/plugin/org.eclipse.ui.views/icons/full/eview16/outline_co.png, tooltip: , dirty: false, closeable: true, description: null), AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}], Widget=null}, AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}]} to handler org.eclipse.e4.ui.services.internal.events.UIEventHandler@6cb6a38c
+
+!ENTRY org.eclipse.equinox.event 4 0 2025-10-28 21:04:11.338
+!MESSAGE Exception while dispatching event org.osgi.service.event.Event [topic=org/eclipse/e4/ui/model/ui/UIElement/widget/SET] {ChangedElement=org.eclipse.cdt.make.ui.views.MakeView=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@62f11ebb (tags: [View, categoryTag:Make], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@119f035f, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=org.eclipse.cdt.make.ui.views.MakeView, properties=[], tags=[View, categoryTag:Make], wrapped=class org.eclipse.cdt.make.ui.views.MakeView, legacyPart=class org.eclipse.cdt.make.ui.views.MakeView, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.cdt.make.ui.views.MakeView) Context, variables: [], label: Build Targets, iconURI: platform:/plugin/org.eclipse.cdt.make.ui/icons/view16/make_target.gif, tooltip: , dirty: false, closeable: true, description: null), Widget=null, org.eclipse.e4.data={ChangedElement=org.eclipse.cdt.make.ui.views.MakeView=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@62f11ebb (tags: [View, categoryTag:Make], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@119f035f, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=org.eclipse.cdt.make.ui.views.MakeView, properties=[], tags=[View, categoryTag:Make], wrapped=class org.eclipse.cdt.make.ui.views.MakeView, legacyPart=class org.eclipse.cdt.make.ui.views.MakeView, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.cdt.make.ui.views.MakeView) Context, variables: [], label: Build Targets, iconURI: platform:/plugin/org.eclipse.cdt.make.ui/icons/view16/make_target.gif, tooltip: , dirty: false, closeable: true, description: null), AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}], Widget=null}, AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}]} to handler org.eclipse.e4.ui.services.internal.events.UIEventHandler@53963f8e
+
+!ENTRY org.eclipse.equinox.event 4 0 2025-10-28 21:04:11.346
+!MESSAGE Exception while dispatching event org.osgi.service.event.Event [topic=org/eclipse/e4/ui/model/ui/UIElement/widget/SET] {ChangedElement=org.eclipse.ui.console.ConsoleView=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@47c7a9e5 (tags: [View, categoryTag:General], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@119f035f, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=org.eclipse.ui.console.ConsoleView, properties=[], tags=[View, categoryTag:General], wrapped=class org.eclipse.ui.internal.console.ConsoleView, legacyPart=class org.eclipse.ui.internal.console.ConsoleView, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.ui.console.ConsoleView) Context, variables: [], label: Console, iconURI: platform:/plugin/org.eclipse.ui.console/icons/full/cview16/console_view.png, tooltip: , dirty: false, closeable: true, description: null), Widget=null, org.eclipse.e4.data={ChangedElement=org.eclipse.ui.console.ConsoleView=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@47c7a9e5 (tags: [View, categoryTag:General], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@119f035f, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=org.eclipse.ui.console.ConsoleView, properties=[], tags=[View, categoryTag:General], wrapped=class org.eclipse.ui.internal.console.ConsoleView, legacyPart=class org.eclipse.ui.internal.console.ConsoleView, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.ui.console.ConsoleView) Context, variables: [], label: Console, iconURI: platform:/plugin/org.eclipse.ui.console/icons/full/cview16/console_view.png, tooltip: , dirty: false, closeable: true, description: null), AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer$2@229d5d14], Widget=null}, AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer$2@229d5d14]} to handler org.eclipse.e4.ui.services.internal.events.UIEventHandler@40957c86
+
+!ENTRY org.eclipse.equinox.event 4 0 2025-10-28 21:04:11.353
+!MESSAGE Exception while dispatching event org.osgi.service.event.Event [topic=org/eclipse/e4/ui/model/ui/UIElement/widget/SET] {ChangedElement=org.eclipse.ui.views.ProblemView=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@1b01a0d (tags: [View, categoryTag:General], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@119f035f, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=org.eclipse.ui.views.ProblemView, properties=[], tags=[View, categoryTag:General], wrapped=class org.eclipse.ui.internal.views.markers.ProblemsView, legacyPart=class org.eclipse.ui.internal.views.markers.ProblemsView, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.ui.views.ProblemView) Context, variables: [], label: Problems, iconURI: platform:/plugin/org.eclipse.ui.ide/icons/full/eview16/problems_view.png, tooltip: , dirty: false, closeable: true, description: null), Widget=null, org.eclipse.e4.data={ChangedElement=org.eclipse.ui.views.ProblemView=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@1b01a0d (tags: [View, categoryTag:General], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@119f035f, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=org.eclipse.ui.views.ProblemView, properties=[], tags=[View, categoryTag:General], wrapped=class org.eclipse.ui.internal.views.markers.ProblemsView, legacyPart=class org.eclipse.ui.internal.views.markers.ProblemsView, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.ui.views.ProblemView) Context, variables: [], label: Problems, iconURI: platform:/plugin/org.eclipse.ui.ide/icons/full/eview16/problems_view.png, tooltip: , dirty: false, closeable: true, description: null), AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer$2@603520f3], Widget=null}, AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer$2@603520f3]} to handler org.eclipse.e4.ui.services.internal.events.UIEventHandler@77ae2d25
+
+!ENTRY org.eclipse.equinox.event 4 0 2025-10-28 21:04:11.359
+!MESSAGE Exception while dispatching event org.osgi.service.event.Event [topic=org/eclipse/e4/ui/model/ui/UIElement/widget/SET] {ChangedElement=org.eclipse.ui.views.TaskList=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@65bb6275 (tags: [View, categoryTag:General], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@119f035f, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=org.eclipse.ui.views.TaskList, properties=[], tags=[View, categoryTag:General], wrapped=class org.eclipse.ui.internal.views.markers.TasksView, legacyPart=class org.eclipse.ui.internal.views.markers.TasksView, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.ui.views.TaskList) Context, variables: [], label: Tasks, iconURI: platform:/plugin/org.eclipse.ui.ide/icons/full/eview16/tasks_tsk.png, tooltip: , dirty: false, closeable: true, description: null), Widget=null, org.eclipse.e4.data={ChangedElement=org.eclipse.ui.views.TaskList=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@65bb6275 (tags: [View, categoryTag:General], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@119f035f, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=org.eclipse.ui.views.TaskList, properties=[], tags=[View, categoryTag:General], wrapped=class org.eclipse.ui.internal.views.markers.TasksView, legacyPart=class org.eclipse.ui.internal.views.markers.TasksView, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.ui.views.TaskList) Context, variables: [], label: Tasks, iconURI: platform:/plugin/org.eclipse.ui.ide/icons/full/eview16/tasks_tsk.png, tooltip: , dirty: false, closeable: true, description: null), AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer$2@3f13ab39], Widget=null}, AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer$2@3f13ab39]} to handler org.eclipse.e4.ui.services.internal.events.UIEventHandler@54898111
+
+!ENTRY org.eclipse.equinox.event 4 0 2025-10-28 21:04:11.367
+!MESSAGE Exception while dispatching event org.osgi.service.event.Event [topic=org/eclipse/e4/ui/model/ui/UIElement/widget/SET] {ChangedElement=org.eclipse.ui.views.PropertySheet=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@2d119405 (tags: [View, categoryTag:General], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@119f035f, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=org.eclipse.ui.views.PropertySheet, properties=[], tags=[View, categoryTag:General], wrapped=class org.eclipse.ui.views.properties.PropertySheet, legacyPart=class org.eclipse.ui.views.properties.PropertySheet, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.ui.views.PropertySheet) Context, variables: [], label: Properties, iconURI: platform:/plugin/org.eclipse.ui.views/icons/full/eview16/prop_ps.png, tooltip: , dirty: false, closeable: true, description: null), Widget=null, org.eclipse.e4.data={ChangedElement=org.eclipse.ui.views.PropertySheet=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@2d119405 (tags: [View, categoryTag:General], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@119f035f, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=org.eclipse.ui.views.PropertySheet, properties=[], tags=[View, categoryTag:General], wrapped=class org.eclipse.ui.views.properties.PropertySheet, legacyPart=class org.eclipse.ui.views.properties.PropertySheet, beingDisposed=true, alreadyDisposed=false], context: PartImpl (org.eclipse.ui.views.PropertySheet) Context, variables: [], label: Properties, iconURI: platform:/plugin/org.eclipse.ui.views/icons/full/eview16/prop_ps.png, tooltip: , dirty: false, closeable: true, description: null), AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}], Widget=null}, AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}]} to handler org.eclipse.e4.ui.services.internal.events.UIEventHandler@1d7201cb
+
+!ENTRY org.eclipse.equinox.event 4 0 2025-10-28 21:04:11.374
+!MESSAGE Exception while dispatching event org.osgi.service.event.Event [topic=org/eclipse/e4/ui/model/ui/UIElement/widget/SET] {ChangedElement=com.st.stm32cube.ide.mcu.buildanalyzer.view=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@78fe204a (tags: [View, categoryTag:C/C++], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@119f035f, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=com.st.stm32cube.ide.mcu.buildanalyzer.view, properties=[], tags=[View, categoryTag:C/C++], wrapped=class elf_analyzer.ElfAnalyzerView, legacyPart=class elf_analyzer.ElfAnalyzerView, beingDisposed=true, alreadyDisposed=false], context: PartImpl (com.st.stm32cube.ide.mcu.buildanalyzer.view) Context, variables: [], label: Build Analyzer, iconURI: platform:/plugin/com.st.stm32cube.ide.mcu.buildanalyzer/icons/view_icon.gif, tooltip: , dirty: false, closeable: true, description: null), Widget=null, org.eclipse.e4.data={ChangedElement=com.st.stm32cube.ide.mcu.buildanalyzer.view=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@78fe204a (tags: [View, categoryTag:C/C++], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@119f035f, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=com.st.stm32cube.ide.mcu.buildanalyzer.view, properties=[], tags=[View, categoryTag:C/C++], wrapped=class elf_analyzer.ElfAnalyzerView, legacyPart=class elf_analyzer.ElfAnalyzerView, beingDisposed=true, alreadyDisposed=false], context: PartImpl (com.st.stm32cube.ide.mcu.buildanalyzer.view) Context, variables: [], label: Build Analyzer, iconURI: platform:/plugin/com.st.stm32cube.ide.mcu.buildanalyzer/icons/view_icon.gif, tooltip: , dirty: false, closeable: true, description: null), AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}], Widget=null}, AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}]} to handler org.eclipse.e4.ui.services.internal.events.UIEventHandler@2142754a
+
+!ENTRY org.eclipse.equinox.event 4 0 2025-10-28 21:04:11.382
+!MESSAGE Exception while dispatching event org.osgi.service.event.Event [topic=org/eclipse/e4/ui/model/ui/UIElement/widget/SET] {ChangedElement=com.st.stm32cube.ide.mcu.stackanalyzer.stackanalyzer.view=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@5c887052 (tags: [View, categoryTag:C/C++], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@119f035f, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=com.st.stm32cube.ide.mcu.stackanalyzer.stackanalyzer.view, properties=[], tags=[View, categoryTag:C/C++], wrapped=class com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView, legacyPart=class com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView, beingDisposed=true, alreadyDisposed=false], context: PartImpl (com.st.stm32cube.ide.mcu.stackanalyzer.stackanalyzer.view) Context, variables: [], label: Static Stack Analyzer, iconURI: platform:/plugin/com.st.stm32cube.ide.mcu.stackanalyzer/icons/view_icon.gif, tooltip: , dirty: false, closeable: true, description: null), Widget=null, org.eclipse.e4.data={ChangedElement=com.st.stm32cube.ide.mcu.stackanalyzer.stackanalyzer.view=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@5c887052 (tags: [View, categoryTag:C/C++], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@119f035f, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=com.st.stm32cube.ide.mcu.stackanalyzer.stackanalyzer.view, properties=[], tags=[View, categoryTag:C/C++], wrapped=class com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView, legacyPart=class com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView, beingDisposed=true, alreadyDisposed=false], context: PartImpl (com.st.stm32cube.ide.mcu.stackanalyzer.stackanalyzer.view) Context, variables: [], label: Static Stack Analyzer, iconURI: platform:/plugin/com.st.stm32cube.ide.mcu.stackanalyzer/icons/view_icon.gif, tooltip: , dirty: false, closeable: true, description: null), AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}], Widget=null}, AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}]} to handler org.eclipse.e4.ui.services.internal.events.UIEventHandler@2c3344f0
+
+!ENTRY org.eclipse.equinox.event 4 0 2025-10-28 21:04:11.389
+!MESSAGE Exception while dispatching event org.osgi.service.event.Event [topic=org/eclipse/e4/ui/model/ui/UIElement/widget/SET] {ChangedElement=com.st.stm32cube.ide.mcu.cyclomaticcomplexity.view=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@29050de5 (tags: [View, categoryTag:C/C++], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@119f035f, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=com.st.stm32cube.ide.mcu.cyclomaticcomplexity.view, properties=[], tags=[View, categoryTag:C/C++], wrapped=class com.st.stm32cube.ide.mcu.cyclomaticcomplexity.CyclomaticView, legacyPart=class com.st.stm32cube.ide.mcu.cyclomaticcomplexity.CyclomaticView, beingDisposed=true, alreadyDisposed=false], context: PartImpl (com.st.stm32cube.ide.mcu.cyclomaticcomplexity.view) Context, variables: [], label: Cyclomatic Complexity, iconURI: platform:/plugin/com.st.stm32cube.ide.mcu.cyclomaticcomplexity/icons/algorithm.png, tooltip: , dirty: false, closeable: true, description: null), Widget=null, org.eclipse.e4.data={ChangedElement=com.st.stm32cube.ide.mcu.cyclomaticcomplexity.view=org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl@29050de5 (tags: [View, categoryTag:C/C++], contributorURI: null) (widget: null, renderer: org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer@119f035f, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (contributionURI: bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView, object: CompatibilityPart [partId=com.st.stm32cube.ide.mcu.cyclomaticcomplexity.view, properties=[], tags=[View, categoryTag:C/C++], wrapped=class com.st.stm32cube.ide.mcu.cyclomaticcomplexity.CyclomaticView, legacyPart=class com.st.stm32cube.ide.mcu.cyclomaticcomplexity.CyclomaticView, beingDisposed=true, alreadyDisposed=false], context: PartImpl (com.st.stm32cube.ide.mcu.cyclomaticcomplexity.view) Context, variables: [], label: Cyclomatic Complexity, iconURI: platform:/plugin/com.st.stm32cube.ide.mcu.cyclomaticcomplexity/icons/algorithm.png, tooltip: , dirty: false, closeable: true, description: null), AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}], Widget=null}, AttName=widget, EventType=SET, OldValue=ContributedPartRenderer$1 {} [layout=FillLayout {type=SWT.VERTICAL}]} to handler org.eclipse.e4.ui.services.internal.events.UIEventHandler@290798cb
+
+!ENTRY org.eclipse.osgi 4 0 2025-10-28 21:04:11.522
+!MESSAGE Application error
+
+!ENTRY org.eclipse.osgi 4 0 2025-10-28 21:04:11.526
+!MESSAGE Shutdown error
+!SESSION Tue Oct 28 21:04:11 CET 2025 ------------------------------------------
+!ENTRY org.eclipse.equinox.launcher 4 0 2025-10-28 21:04:11.530
+!MESSAGE Exception launching the Eclipse Platform:
+!STACK
+!SESSION 2025-10-28 21:04:42.418 -----------------------------------------------
+eclipse.buildId=Version 1.13.2
+java.version=17.0.6
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_AR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-10-28 21:06:00.073
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-10-28 21:06:00.078
+!MESSAGE Log4j2 initialized with config file C:\Users\admin\Desktop\Aerospace_Training\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-10-28 21:06:11.540
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-10-28 21:25:17.856
+!MESSAGE Indexed 'stm32l47xx_drivers' (12 sources, 71 headers) in 2.26 sec: 2,965 declarations; 5,048 references; 0 unresolved inclusions; 1 syntax errors; 64 unresolved names (0.79%)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2025-10-28 22:41:46.893
+!MESSAGE Won't launch debug session since we failed to locate the binary.
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2025-10-28 22:42:19.715
+!MESSAGE Won't launch debug session since we failed to locate the binary.
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2025-10-28 22:42:48.466
+!MESSAGE Won't launch debug session since we failed to locate the binary.
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2025-10-28 22:43:29.129
+!MESSAGE Won't launch debug session since we failed to locate the binary.
+!SESSION 2026-01-29 19:06:03.221 -----------------------------------------------
+eclipse.buildId=Version 1.13.2
+java.version=17.0.6
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_AR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2026-01-29 19:06:38.336
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2026-01-29 19:07:26.461
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-01-29 19:07:26.475
+!MESSAGE Log4j2 initialized with config file C:\Users\admin\Desktop\Aerospace_Training\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-01-29 19:07:42.331
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-01-29 19:25:08.775
+!MESSAGE Indexed 'RTOS Flight Control Logic - Task Scheduling and Vitals' (32 sources, 92 headers) in 8.2 sec: 8,515 declarations; 59,902 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0029%)
+!SESSION 2026-02-03 21:27:48.880 -----------------------------------------------
+eclipse.buildId=Version 1.13.2
+java.version=17.0.6
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_AR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2026-02-03 21:28:18.728
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.core.resources 4 567 2026-02-03 21:28:19.164
+!MESSAGE Workspace restored, but some problems occurred.
+!SUBENTRY 1 org.eclipse.core.resources 4 567 2026-02-03 21:28:19.164
+!MESSAGE Could not read metadata for 'RTOS Flight Control Logic - Task Scheduling and Vitals'.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException(/RTOS Flight Control Logic - Task Scheduling and Vitals)[567]: java.lang.Exception: The project description file (.project) for 'RTOS Flight Control Logic - Task Scheduling and Vitals' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:42)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:38)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:908)
+	at org.eclipse.core.internal.resources.SaveManager.restoreMetaInfo(SaveManager.java:894)
+	at org.eclipse.core.internal.resources.SaveManager.restoreMetaInfo(SaveManager.java:874)
+	at org.eclipse.core.internal.resources.SaveManager.restore(SaveManager.java:730)
+	at org.eclipse.core.internal.resources.SaveManager.startup(SaveManager.java:1584)
+	at org.eclipse.core.internal.resources.Workspace.startup(Workspace.java:2547)
+	at org.eclipse.core.internal.resources.Workspace.open(Workspace.java:2252)
+	at org.eclipse.core.resources.ResourcesPlugin$WorkspaceInitCustomizer.addingService(ResourcesPlugin.java:571)
+	at org.eclipse.core.resources.ResourcesPlugin$WorkspaceInitCustomizer.addingService(ResourcesPlugin.java:1)
+	at org.osgi.util.tracker.ServiceTracker$Tracked.customizerAdding(ServiceTracker.java:943)
+	at org.osgi.util.tracker.ServiceTracker$Tracked.customizerAdding(ServiceTracker.java:1)
+	at org.osgi.util.tracker.AbstractTracked.trackAdding(AbstractTracked.java:256)
+	at org.osgi.util.tracker.AbstractTracked.trackInitial(AbstractTracked.java:183)
+	at org.osgi.util.tracker.ServiceTracker.open(ServiceTracker.java:321)
+	at org.osgi.util.tracker.ServiceTracker.open(ServiceTracker.java:264)
+	at org.eclipse.core.resources.ResourcesPlugin.start(ResourcesPlugin.java:545)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$2.run(BundleContextImpl.java:818)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$2.run(BundleContextImpl.java:1)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:569)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.startActivator(BundleContextImpl.java:810)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(BundleContextImpl.java:767)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.startWorker0(EquinoxBundle.java:1032)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.startWorker(EquinoxBundle.java:371)
+	at org.eclipse.osgi.container.Module.doStart(Module.java:605)
+	at org.eclipse.osgi.container.Module.start(Module.java:468)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:513)
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:117)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:570)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:335)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:397)
+	at org.eclipse.osgi.internal.loader.sources.SingleSourcePackage.loadClass(SingleSourcePackage.java:41)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass0(BundleLoader.java:496)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:416)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:168)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:520)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:153)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:402)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
+!SUBENTRY 2 org.eclipse.core.resources 4 567 2026-02-03 21:28:19.165
+!MESSAGE The project description file (.project) for 'RTOS Flight Control Logic - Task Scheduling and Vitals' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+!STACK 0
+java.lang.Exception: The project description file (.project) for 'RTOS Flight Control Logic - Task Scheduling and Vitals' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:42)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:38)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:908)
+	at org.eclipse.core.internal.resources.SaveManager.restoreMetaInfo(SaveManager.java:894)
+	at org.eclipse.core.internal.resources.SaveManager.restoreMetaInfo(SaveManager.java:874)
+	at org.eclipse.core.internal.resources.SaveManager.restore(SaveManager.java:730)
+	at org.eclipse.core.internal.resources.SaveManager.startup(SaveManager.java:1584)
+	at org.eclipse.core.internal.resources.Workspace.startup(Workspace.java:2547)
+	at org.eclipse.core.internal.resources.Workspace.open(Workspace.java:2252)
+	at org.eclipse.core.resources.ResourcesPlugin$WorkspaceInitCustomizer.addingService(ResourcesPlugin.java:571)
+	at org.eclipse.core.resources.ResourcesPlugin$WorkspaceInitCustomizer.addingService(ResourcesPlugin.java:1)
+	at org.osgi.util.tracker.ServiceTracker$Tracked.customizerAdding(ServiceTracker.java:943)
+	at org.osgi.util.tracker.ServiceTracker$Tracked.customizerAdding(ServiceTracker.java:1)
+	at org.osgi.util.tracker.AbstractTracked.trackAdding(AbstractTracked.java:256)
+	at org.osgi.util.tracker.AbstractTracked.trackInitial(AbstractTracked.java:183)
+	at org.osgi.util.tracker.ServiceTracker.open(ServiceTracker.java:321)
+	at org.osgi.util.tracker.ServiceTracker.open(ServiceTracker.java:264)
+	at org.eclipse.core.resources.ResourcesPlugin.start(ResourcesPlugin.java:545)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$2.run(BundleContextImpl.java:818)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$2.run(BundleContextImpl.java:1)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:569)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.startActivator(BundleContextImpl.java:810)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(BundleContextImpl.java:767)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.startWorker0(EquinoxBundle.java:1032)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.startWorker(EquinoxBundle.java:371)
+	at org.eclipse.osgi.container.Module.doStart(Module.java:605)
+	at org.eclipse.osgi.container.Module.start(Module.java:468)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:513)
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:117)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:570)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:335)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:397)
+	at org.eclipse.osgi.internal.loader.sources.SingleSourcePackage.loadClass(SingleSourcePackage.java:41)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass0(BundleLoader.java:496)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:416)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:168)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:520)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:153)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:402)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2026-02-03 21:28:50.027
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-02-03 21:28:50.040
+!MESSAGE Log4j2 initialized with config file C:\Users\admin\Desktop\Aerospace_Training\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-02-03 21:29:02.544
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-02-03 21:36:31.454
+!MESSAGE Indexed 'Flight-Control-Telemetry-Errors' (32 sources, 92 headers) in 10.9 sec: 8,515 declarations; 59,902 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0029%)
+!SESSION 2026-02-04 18:34:05.364 -----------------------------------------------
+eclipse.buildId=Version 1.13.2
+java.version=17.0.6
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_AR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2026-02-04 18:34:35.278
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2026-02-04 18:35:06.515
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-02-04 18:35:06.528
+!MESSAGE Log4j2 initialized with config file C:\Users\admin\Desktop\Aerospace_Training\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-02-04 18:35:22.369
+!MESSAGE Started RMI Server, listening on port 41337
