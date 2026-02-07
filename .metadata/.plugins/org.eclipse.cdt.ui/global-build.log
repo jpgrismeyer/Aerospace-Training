@@ -1705,3 +1705,124 @@ arm-none-eabi-size   IMU_Bar_Semaphores.elf
   60680	    484	  22732	  83896	  147b8	IMU_Bar_Semaphores.elf
 Finished building: default.size.stdout
  
+10:28:19 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32l4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32l4xx_hal_msp.d" -MT"Core/Src/stm32l4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32l4xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32l4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32l4xx_it.d" -MT"Core/Src/stm32l4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32l4xx_it.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:194:3: warning: implicit declaration of function 'Calibrar_IMU' [-Wimplicit-function-declaration]
+  194 |   Calibrar_IMU();
+      |   ^~~~~~~~~~~~
+../Core/Src/main.c:195:3: warning: implicit declaration of function 'LPS22HB_Init'; did you mean 'LPS22HB_ADDR'? [-Wimplicit-function-declaration]
+  195 |   LPS22HB_Init();
+      |   ^~~~~~~~~~~~
+      |   LPS22HB_ADDR
+../Core/Src/main.c:196:3: warning: implicit declaration of function 'LSM6DSL_Init'; did you mean 'LSM6DSL_ADDR'? [-Wimplicit-function-declaration]
+  196 |   LSM6DSL_Init();
+      |   ^~~~~~~~~~~~
+      |   LSM6DSL_ADDR
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:842:6: warning: conflicting types for 'LSM6DSL_Init'; have 'void(void)'
+  842 | void LSM6DSL_Init(void) {
+      |      ^~~~~~~~~~~~
+../Core/Src/main.c:196:3: note: previous implicit declaration of 'LSM6DSL_Init' with type 'void(void)'
+  196 |   LSM6DSL_Init();
+      |   ^~~~~~~~~~~~
+../Core/Src/main.c:850:6: warning: conflicting types for 'Calibrar_IMU'; have 'void(void)'
+  850 | void Calibrar_IMU(void) {
+      |      ^~~~~~~~~~~~
+../Core/Src/main.c:194:3: note: previous implicit declaration of 'Calibrar_IMU' with type 'void(void)'
+  194 |   Calibrar_IMU();
+      |   ^~~~~~~~~~~~
+../Core/Src/main.c: In function 'Calibrar_IMU':
+../Core/Src/main.c:857:13: warning: implicit declaration of function 'Leer_Sensor_IMU' [-Wimplicit-function-declaration]
+  857 |         if (Leer_Sensor_IMU(&tx, &ty, &tz) == HAL_OK) {
+      |             ^~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:870:6: warning: conflicting types for 'LPS22HB_Init'; have 'void(void)'
+  870 | void LPS22HB_Init(void) {
+      |      ^~~~~~~~~~~~
+../Core/Src/main.c:195:3: note: previous implicit declaration of 'LPS22HB_Init' with type 'void(void)'
+  195 |   LPS22HB_Init();
+      |   ^~~~~~~~~~~~
+../Core/Src/main.c:877:19: error: conflicting types for 'Leer_Sensor_IMU'; have 'HAL_StatusTypeDef(float *, float *, float *)'
+  877 | HAL_StatusTypeDef Leer_Sensor_IMU(float *x, float *y, float *z) {
+      |                   ^~~~~~~~~~~~~~~
+../Core/Src/main.c:857:13: note: previous implicit declaration of 'Leer_Sensor_IMU' with type 'int()'
+  857 |         if (Leer_Sensor_IMU(&tx, &ty, &tz) == HAL_OK) {
+      |             ^~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'Leer_Sensor_Baro':
+../Core/Src/main.c:927:39: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
+  927 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:139:1: note: include '<math.h>' or provide a declaration of 'powf'
+  138 | #include <stdio.h>
+  +++ |+#include <math.h>
+  139 | 
+../Core/Src/main.c:927:39: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
+  927 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:927:39: note: include '<math.h>' or provide a declaration of 'powf'
+make: *** [Core/Src/subdir.mk:40: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+10:34:55 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'Leer_Sensor_Baro':
+../Core/Src/main.c:932:39: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
+  932 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:144:1: note: include '<math.h>' or provide a declaration of 'powf'
+  143 | #include <stdio.h>
+  +++ |+#include <math.h>
+  144 | 
+../Core/Src/main.c:932:39: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
+  932 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:932:39: note: include '<math.h>' or provide a declaration of 'powf'
+arm-none-eabi-gcc -o "IMU_Bar_Semaphores.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\admin\Desktop\Aerospace_Training\IMU_Bar_Semaphores\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IMU_Bar_Semaphores.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: IMU_Bar_Semaphores.elf
+ 
+arm-none-eabi-size   IMU_Bar_Semaphores.elf 
+arm-none-eabi-objdump -h -S  IMU_Bar_Semaphores.elf  > "IMU_Bar_Semaphores.list"
+   text	   data	    bss	    dec	    hex	filename
+  68784	    484	  22884	  92152	  167f8	IMU_Bar_Semaphores.elf
+Finished building: default.size.stdout
+ 
+Finished building: IMU_Bar_Semaphores.list
+ 
+10:35:02 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-size   IMU_Bar_Semaphores.elf 
+   text	   data	    bss	    dec	    hex	filename
+  68784	    484	  22884	  92152	  167f8	IMU_Bar_Semaphores.elf
+Finished building: default.size.stdout
+ 
+10:47:23 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'Leer_Sensor_Baro':
+../Core/Src/main.c:943:39: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
+  943 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:144:1: note: include '<math.h>' or provide a declaration of 'powf'
+  143 | #include <stdio.h>
+  +++ |+#include <math.h>
+  144 | 
+../Core/Src/main.c:943:39: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
+  943 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:943:39: note: include '<math.h>' or provide a declaration of 'powf'
+arm-none-eabi-gcc -o "IMU_Bar_Semaphores.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\admin\Desktop\Aerospace_Training\IMU_Bar_Semaphores\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IMU_Bar_Semaphores.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: IMU_Bar_Semaphores.elf
+ 
+arm-none-eabi-size   IMU_Bar_Semaphores.elf 
+arm-none-eabi-objdump -h -S  IMU_Bar_Semaphores.elf  > "IMU_Bar_Semaphores.list"
+   text	   data	    bss	    dec	    hex	filename
+  69760	    484	  22884	  93128	  16bc8	IMU_Bar_Semaphores.elf
+Finished building: default.size.stdout
+ 
+Finished building: IMU_Bar_Semaphores.list
+ 

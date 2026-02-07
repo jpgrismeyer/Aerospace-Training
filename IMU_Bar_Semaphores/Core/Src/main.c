@@ -44,6 +44,8 @@
 DFSDM_Channel_HandleTypeDef hdfsdm1_channel1;
 
 I2C_HandleTypeDef hi2c2;
+DMA_HandleTypeDef hdma_i2c2_rx;
+DMA_HandleTypeDef hdma_i2c2_tx;
 
 QSPI_HandleTypeDef hqspi;
 
@@ -105,11 +107,15 @@ typedef struct {
 #define LPS22HB_ADDR (0x5D << 1)
 float P_referencia = 1013.25f; // Valor estándar inicial (hPa)
 float bias_x = 0, bias_y = 0, bias_z = 0; //para calibracion
+
+osSemaphoreId_t i2c_dma_semHandle;
+const osSemaphoreAttr_t i2c_dma_sem_attributes = { .name = "i2c_dma_sem" };
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_DMA_Init(void);
 static void MX_DFSDM1_Init(void);
 static void MX_I2C2_Init(void);
 static void MX_QUADSPI_Init(void);
@@ -121,14 +127,15 @@ static void MX_TIM2_Init(void);
 void StartBaroTask(void *argument);
 void StartIMU_Task(void *argument);
 void StartTelemetry_Task(void *argument);
-HAL_StatusTypeDef Leer_Sensor_IMU(float *x, float *y, float *z);
-HAL_StatusTypeDef Leer_Sensor_Baro(float *presion, float *altitud);
-void LPS22HB_Init(void);
-void LSM6DSL_Init(void);
-void Calibrar_IMU(void);
+
 
 /* USER CODE BEGIN PFP */
-
+void LSM6DSL_Init(void);
+void LPS22HB_Init(void);
+void Calibrar_IMU(void);
+HAL_StatusTypeDef Leer_Sensor_Baro(float *presion, float *altitud);
+HAL_StatusTypeDef Leer_Sensor_IMU(float *x, float *y, float *z);
+void HAL_I2C_MemRxCpltCallback(I2C_HandleTypeDef *hi2c);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -175,8 +182,9 @@ int main(void)
 
   /* USER CODE END SysInit */
 
-  /* 1. Initialize all configured peripherals */
+  /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_DFSDM1_Init();
   MX_I2C2_Init();
   MX_QUADSPI_Init();
@@ -205,6 +213,7 @@ int main(void)
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
   /* add semaphores, ... */
+  i2c_dma_semHandle = osSemaphoreNew(1, 0, &i2c_dma_sem_attributes);
   /* USER CODE END RTOS_SEMAPHORES */
 
   /* USER CODE BEGIN RTOS_TIMERS */
@@ -641,6 +650,25 @@ static void MX_USB_OTG_FS_PCD_Init(void)
 }
 
 /**
+  * Enable DMA controller clock
+  */
+static void MX_DMA_Init(void)
+{
+
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA1_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  /* DMA1_Channel4_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel4_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel4_IRQn);
+  /* DMA1_Channel5_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel5_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel5_IRQn);
+
+}
+
+/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -826,22 +854,33 @@ void LSM6DSL_Init(void) {
 
 void Calibrar_IMU(void) {
 	printf("Calibrando...\n");
+	uint8_t buffer[6];
     float suma_x = 0, suma_y = 0, suma_z = 0;
-    float tx, ty, tz;
     int muestras = 100;
 
     for(int i = 0; i < muestras; i++) {
-        if (Leer_Sensor_IMU(&tx, &ty, &tz) == HAL_OK) {
-            suma_x += tx;
-            suma_y += ty;
-            suma_z += tz;
+    	//Leemos directamente la HAL sin DMA ni semáforos
+        if (HAL_I2C_Mem_Read(&hi2c2, 0xD4, 0x22, 1, buffer, 6, 100) == HAL_OK) {
+        	// Reconstrucción manual de los datos
+			int16_t gx = (int16_t)((buffer[1] << 8) | buffer[0]);
+			int16_t gy = (int16_t)((buffer[3] << 8) | buffer[2]);
+			int16_t gz = (int16_t)((buffer[5] << 8) | buffer[4]);
+
+			// Sumamos aplicando el factor de escala de 2000 dps (0.070)
+			suma_x += (gx * 0.070f);
+			suma_y += (gy * 0.070f);
+			suma_z += (gz * 0.070f);
         }
-        HAL_Delay(2); // Un pequeño respiro entre lecturas
+        // Usamos HAL_Delay porque el osDelay todavía no funciona (Kernel parado)
+			HAL_Delay(5);
     }
-    // Sacamos el promedio del error
-    bias_x = suma_x / muestras;
-    bias_y = suma_y / muestras;
-    bias_z = suma_z / muestras;
+    // Promediamos para obtener el Bias (el error estático)
+        bias_x = suma_x / muestras;
+        bias_y = suma_y / muestras;
+        bias_z = suma_z / muestras;
+
+        printf("Calibracion Exitosa!\n");
+        printf("Bias -> X: %.2f | Y: %.2f | Z: %.2f\n", bias_x, bias_y, bias_z);
 }
 
 void LPS22HB_Init(void) {
@@ -855,22 +894,27 @@ HAL_StatusTypeDef Leer_Sensor_IMU(float *x, float *y, float *z) {
     uint8_t buffer[6];
     HAL_StatusTypeDef status;
 
-    // Leemos los 6 registros del giroscopio de un tirón
+    // 1. Iniciamos la lectura por DMA
     // 0xD4 es la dirección del LSM6DSL, 0x22 es el registro inicial (OUTX_L_G)
-    status = HAL_I2C_Mem_Read(&hi2c2, 0xD4, 0x22, 1, buffer, 6, 100);
+    status = HAL_I2C_Mem_Read_DMA(&hi2c2, 0xD4, 0x22, 1, buffer, 6);
 
-    if (status == HAL_OK) {
-        // Reconstruimos los 16 bits y escalamos a grados/segundo
-        *x = (float)((int16_t)((buffer[1] << 8) | buffer[0])) * 0.0175f;
-        *y = (float)((int16_t)((buffer[3] << 8) | buffer[2])) * 0.0175f;
-        *z = (float)((int16_t)((buffer[5] << 8) | buffer[4])) * 0.0175f;
+    if (status != HAL_OK)return status;
+    // 2. Esperamos a que el DMA termine (bloqueamos la tarea)
+	// El timeout de 10ms es suficiente para una lectura I2C
+	if (osSemaphoreAcquire(i2c_dma_semHandle, 10) != osOK) {
+		return HAL_TIMEOUT;
+	}
 
-	// RESTAMOS EL ERROR CALCULADO
-		*x = *x - bias_x;
-		*y = *y - bias_y;
-		*z = *z - bias_z;
-    }
-    return status;
+	// 3. Procesamos los datos (igual que antes)
+	    int16_t gx = (int16_t)((buffer[1] << 8) | buffer[0]);
+	    int16_t gy = (int16_t)((buffer[3] << 8) | buffer[2]);
+	    int16_t gz = (int16_t)((buffer[5] << 8) | buffer[4]);
+
+	    *x = (gx * 0.070f) - bias_x;
+	    *y = (gy * 0.070f) - bias_y;
+	    *z = (gz * 0.070f) - bias_z;
+
+	    return HAL_OK;
 }
 
 
@@ -879,19 +923,33 @@ HAL_StatusTypeDef Leer_Sensor_Baro(float *presion, float *altitud) {
     HAL_StatusTypeDef status;
 
     // 0x28 | 0x80 es para auto-incremento de dirección en I2C (según datasheet del LPS22HB)
-    status = HAL_I2C_Mem_Read(&hi2c2, LPS22HB_ADDR, 0x28 | 0x80, 1, raw_press, 3, 100);
+    status = HAL_I2C_Mem_Read_DMA(&hi2c2, LPS22HB_ADDR, 0x28 | 0x80, 1, raw_press, 3);
 
-    if (status == HAL_OK) {
-        // Unión de los 3 bytes (24 bits)
-        uint32_t press_int = (uint32_t)raw_press[2] << 16 | (uint32_t)raw_press[1] << 8 | (uint32_t)raw_press[0];
+    if (status != HAL_OK) return status;
+    // 2. Esperamos a que el DMA termine (bloqueamos la tarea)
+        // El timeout de 10ms es suficiente para una lectura I2C
+        if (osSemaphoreAcquire(i2c_dma_semHandle, 10) != osOK) {
+            return HAL_TIMEOUT;
+        }
 
-        // Conversión a hPa
-        *presion = (float)press_int / 4096.0f;
 
-        // Cálculo de altitud relativa a P_referencia (que debe ser global)
-        *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
-    }
+	// Unión de los 3 bytes (24 bits)
+	uint32_t press_int = (uint32_t)raw_press[2] << 16 | (uint32_t)raw_press[1] << 8 | (uint32_t)raw_press[0];
+
+	// Conversión a hPa
+	*presion = (float)press_int / 4096.0f;
+
+	// Cálculo de altitud relativa a P_referencia (que debe ser global)
+	*altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+
     return status;
+}
+
+void HAL_I2C_MemRxCpltCallback(I2C_HandleTypeDef *hi2c) {
+    if (hi2c->Instance == I2C2) {
+        // Liberamos el semáforo para despertar a la tarea que está esperando
+        osSemaphoreRelease(i2c_dma_semHandle);
+    }
 }
 /* USER CODE END 4 */
 
@@ -1004,7 +1062,6 @@ void StartTelemetry_Task(void *argument)
 	}
   /* USER CODE END StartTelemetry_Task */
 }
-
 
 /**
   * @brief  Period elapsed callback in non blocking mode

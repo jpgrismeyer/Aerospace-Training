@@ -1,10 +1,29 @@
-22:28:44 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+10:47:23 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
 make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'Leer_Sensor_Baro':
+../Core/Src/main.c:943:39: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
+  943 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:144:1: note: include '<math.h>' or provide a declaration of 'powf'
+  143 | #include <stdio.h>
+  +++ |+#include <math.h>
+  144 | 
+../Core/Src/main.c:943:39: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
+  943 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:943:39: note: include '<math.h>' or provide a declaration of 'powf'
+arm-none-eabi-gcc -o "IMU_Bar_Semaphores.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\admin\Desktop\Aerospace_Training\IMU_Bar_Semaphores\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IMU_Bar_Semaphores.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: IMU_Bar_Semaphores.elf
+ 
 arm-none-eabi-size   IMU_Bar_Semaphores.elf 
+arm-none-eabi-objdump -h -S  IMU_Bar_Semaphores.elf  > "IMU_Bar_Semaphores.list"
    text	   data	    bss	    dec	    hex	filename
-  60680	    484	  22732	  83896	  147b8	IMU_Bar_Semaphores.elf
+  69760	    484	  22884	  93128	  16bc8	IMU_Bar_Semaphores.elf
 Finished building: default.size.stdout
  
+Finished building: IMU_Bar_Semaphores.list
+ 
 
-22:28:44 Build Finished. 0 errors, 0 warnings. (took 599ms)
+10:47:25 Build Finished. 0 errors, 2 warnings. (took 2s.669ms)
 
