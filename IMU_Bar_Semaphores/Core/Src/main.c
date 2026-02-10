@@ -96,11 +96,13 @@ const osMutexAttr_t I2C2_Mutex_attributes = {
 };
 /* USER CODE BEGIN PV */
 typedef struct {
-    float x;
-    float y;
-    float z;
-    uint32_t timestamp;
+	float pitch;
+	float roll;
+	float z;     // Yaw (DPS)
+	float altitud;
 } IMU_Data_t;
+
+IMU_Data_t datos_nuevos; // Declaración de la variable
 
 // Referencias para los sensores (esto lo usaremos en las tareas)
 #define LSM6DSL_ADDR (0x6A << 1)
@@ -134,7 +136,7 @@ void LSM6DSL_Init(void);
 void LPS22HB_Init(void);
 void Calibrar_IMU(void);
 HAL_StatusTypeDef Leer_Sensor_Baro(float *presion, float *altitud);
-HAL_StatusTypeDef Leer_Sensor_IMU(float *x, float *y, float *z);
+HAL_StatusTypeDef Leer_IMU_Completa_DMA(float *ax, float *ay, float *az, float *gx, float *gy, float *gz);
 void HAL_I2C_MemRxCpltCallback(I2C_HandleTypeDef *hi2c);
 /* USER CODE END PFP */
 
@@ -845,11 +847,16 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 void LSM6DSL_Init(void) {
-	uint8_t ctrl1_xl = 0x60; // Acelerómetro 416Hz
-	    uint8_t ctrl2_g = 0x60;  // Giroscopio 416Hz
+	uint8_t ctrl1_xl = 0x48; // 0100 1000 -> 104Hz, +/-4g
+	    uint8_t ctrl2_g  = 0x4C; // 0100 1100 -> 104Hz, 2000 dps (lo que ya tenías)
 
+	    // 1. Configurar Acelerómetro
 	    HAL_I2C_Mem_Write(&hi2c2, 0xD4, 0x10, 1, &ctrl1_xl, 1, 100);
+
+	    // 2. Configurar Giroscopio
 	    HAL_I2C_Mem_Write(&hi2c2, 0xD4, 0x11, 1, &ctrl2_g, 1, 100);
+
+	    printf("IMU Inicializada: Accel 4g, Gyro 2000dps\n");
 }
 
 void Calibrar_IMU(void) {
@@ -889,30 +896,39 @@ void LPS22HB_Init(void) {
         HAL_I2C_Mem_Write(&hi2c2, LPS22HB_ADDR, 0x10, 1, &config, 1, 100);
 }
 
+
 // Esta función se encarga SOLO de hablar con el sensor
-HAL_StatusTypeDef Leer_Sensor_IMU(float *x, float *y, float *z) {
-    uint8_t buffer[6];
-    HAL_StatusTypeDef status;
+HAL_StatusTypeDef Leer_IMU_Completa_DMA(float *ax, float *ay, float *az, float *gx, float *gy, float *gz) {
+	static uint8_t buffer[12]; // Ahora 12 bytes
+	    HAL_StatusTypeDef status;
 
-    // 1. Iniciamos la lectura por DMA
-    // 0xD4 es la dirección del LSM6DSL, 0x22 es el registro inicial (OUTX_L_G)
-    status = HAL_I2C_Mem_Read_DMA(&hi2c2, 0xD4, 0x22, 1, buffer, 6);
+	    // Leemos 12 bytes desde el primer registro de datos (0x20 es común para Accel)
+	    status = HAL_I2C_Mem_Read_DMA(&hi2c2, 0xD4, 0x22, 1, buffer, 12);
+	    if (status != HAL_OK) return status;
 
-    if (status != HAL_OK)return status;
-    // 2. Esperamos a que el DMA termine (bloqueamos la tarea)
-	// El timeout de 10ms es suficiente para una lectura I2C
-	if (osSemaphoreAcquire(i2c_dma_semHandle, 10) != osOK) {
-		return HAL_TIMEOUT;
-	}
+	    if (osSemaphoreAcquire(i2c_dma_semHandle, 10) != osOK) return HAL_TIMEOUT;
 
-	// 3. Procesamos los datos (igual que antes)
-	    int16_t gx = (int16_t)((buffer[1] << 8) | buffer[0]);
-	    int16_t gy = (int16_t)((buffer[3] << 8) | buffer[2]);
-	    int16_t gz = (int16_t)((buffer[5] << 8) | buffer[4]);
+	    // --- PROCESAMIENTO Giroscopio (buffer [0] a [5]) ---
+	    int16_t raw_gx = (int16_t)((buffer[1] << 8) | buffer[0]);
+		int16_t raw_gy = (int16_t)((buffer[3] << 8) | buffer[2]);
+		int16_t raw_gz = (int16_t)((buffer[5] << 8) | buffer[4]);
 
-	    *x = (gx * 0.070f) - bias_x;
-	    *y = (gy * 0.070f) - bias_y;
-	    *z = (gz * 0.070f) - bias_z;
+		*gx = (raw_gx * 0.070f) - bias_x;
+		*gy = (raw_gy * 0.070f) - bias_y;
+		*gz = (raw_gz * 0.070f) - bias_z;
+
+		// --- PROCESAMIENTO Acelerómetro (buffer [6] a [11]) ---
+
+	    int16_t raw_ax = (int16_t)((buffer[7] << 8) | buffer[6]);
+	    int16_t raw_ay = (int16_t)((buffer[9] << 8) | buffer[8]);
+	    int16_t raw_az = (int16_t)((buffer[11] << 8) | buffer[10]);
+
+	    // Convertimos a 'g' (Escala +-4g -> 0.122 mg/LSB)
+	    *ax = (float)raw_ax * 0.000122f; // Convertido a 'g'
+	    *ay = (float)raw_ay * 0.000122f;
+	    *az = (float)raw_az * 0.000122f;
+
+
 
 	    return HAL_OK;
 }
@@ -1000,27 +1016,39 @@ void StartBaroTask(void *argument)
 void StartIMU_Task(void *argument)
 {
   /* USER CODE BEGIN StartIMU_Task */
-	IMU_Data_t datos_nuevos;
+	// 1. Estado del filtro (static para que no se borren)
+	    static float pitch = 0, roll = 0;
+	    const float dt = 0.01f; // 10ms
 
-	  for(;;) {
-	    // 1. Intentamos agarrar la llave del bus I2C
-	    if (osMutexAcquire(I2C2_MutexHandle, osWaitForever) == osOK) {
+	    // 2. Variables para datos crudos
+	    float ax, ay, az, gx, gy, gz;
 
-	        // 2. Usamos la función que creamos arriba
-	        if (Leer_Sensor_IMU(&datos_nuevos.x, &datos_nuevos.y, &datos_nuevos.z) == HAL_OK) {
+	    for(;;) {
+	        if (osMutexAcquire(I2C2_MutexHandle, osWaitForever) == osOK) {
 
-	            // 3. Si salió OK, mandamos los datos a la cola para Telemetría
-	            osMessageQueuePut(IMU_QueueHandle, &datos_nuevos, 0, 0);
+	            // --- AQUÍ ESTABA EL ERROR: FALTABA LLAMAR A LA LECTURA ---
+	            if (Leer_IMU_Completa_DMA(&ax, &ay, &az, &gx, &gy, &gz) == HAL_OK) {
+
+	                // 3. CÁLCULO DE ÁNGULOS (Acelerómetro)
+	                float accel_pitch = atan2f(ay, az) * 57.2958f;
+	                float accel_roll  = atan2f(-ax, sqrtf(ay*ay + az*az)) * 57.2958f;
+
+	                // 4. FILTRO COMPLEMENTARIO (Fusión)
+	                pitch = 0.98f * (pitch + gx * dt) + 0.02f * accel_pitch;
+	                roll  = 0.98f * (roll + gy * dt) + 0.02f * accel_roll;
+
+	                // 5. CARGAR DATOS PARA TELEMETRÍA
+	                datos_nuevos.pitch = pitch;
+	                datos_nuevos.roll  = roll;
+	                datos_nuevos.z     = gz; // El Yaw se queda en DPS por ahora
+
+	                osMessageQueuePut(IMU_QueueHandle, &datos_nuevos, 0, 0);
+	            }
+
+	            osMutexRelease(I2C2_MutexHandle);
 	        }
-
-	        // 4. IMPORTANTE: Soltamos la llave para que el Barómetro pueda entrar
-	        osMutexRelease(I2C2_MutexHandle);
+	        osDelay(10);
 	    }
-
-	    // 5. Dormimos 10ms para no saturar la CPU
-	    osDelay(10);
-	  }
-
 
   /* USER CODE END StartIMU_Task */
 }
@@ -1041,25 +1069,29 @@ void StartTelemetry_Task(void *argument)
 	uint16_t contador_visual = 0;
 
 	for(;;) {
-	    // 1. Recolectar datos (Polling)
-	    osMessageQueueGet(IMU_QueueHandle, &imu_data, NULL, 0);
-	    osMessageQueueGet(AltitudQueueHandle, &altitud_data, NULL, 0);
+	    // 1. Recolectar datos de las colas
+	    // Usamos osWaitForever o un pequeño timeout para no procesar basura si la cola está vacía
+	    osMessageQueueGet(IMU_QueueHandle, &imu_data, NULL, 10);
+	    osMessageQueueGet(AltitudQueueHandle, &altitud_data, NULL, 10);
 
 	    contador_visual++;
 
-	    // 2. ACTUALIZACIÓN CADA 1 SEGUNDO (100 * 10ms = 1000ms)
-	    if (contador_visual >= 100) {
-	        // Usamos \r para volver al inicio y muchos espacios al final para borrar basura
-	        // %8.2f da espacio para números grandes
-	        printf("\r[IMU DPS] X:%7.2f Y:%7.2f Z:%7.2f | [ALT] %7.2f m      ",
-	               imu_data.x, imu_data.y, imu_data.z, altitud_data);
+	    // 2. ACTUALIZACIÓN DE PANTALLA
+	    // Bajé el contador a 20 (aprox. 5 veces por segundo) para que sea más fluido ver los ángulos
+	    if (contador_visual >= 20) {
 
-	        fflush(stdout); // Obligamos a que salga por el cable
+	        // Cambiamos [IMU DPS] por [ACTITUD] porque ahora son ángulos (Pitch/Roll)
+	        // El eje Z (Yaw) sigue siendo DPS (velocidad de rotación)
+	        printf("\r[ACTITUD] P:%7.2f R:%7.2f Yaw:%7.2f | [ALT] %7.2f m      ",
+	               imu_data.pitch, imu_data.roll, imu_data.z, altitud_data);
+
+	        fflush(stdout);
 	        contador_visual = 0;
 	    }
 
-	    osDelay(10); // Ciclo base de 100Hz
+	    osDelay(10);
 	}
+
   /* USER CODE END StartTelemetry_Task */
 }
 
