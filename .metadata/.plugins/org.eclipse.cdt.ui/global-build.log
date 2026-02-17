@@ -2144,3 +2144,1014 @@ Finished building: default.size.stdout
  
 Finished building: IMU_Bar_Semaphores.list
  
+22:03:29 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32l4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32l4xx_hal_msp.d" -MT"Core/Src/stm32l4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32l4xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32l4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32l4xx_it.d" -MT"Core/Src/stm32l4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32l4xx_it.o"
+../Core/Src/main.c:141:19: error: unknown type name 'PID_Controller'
+  141 | float PID_Compute(PID_Controller *pid, float setpoint, float medido, float dt);
+      |                   ^~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'Leer_Sensor_Baro':
+../Core/Src/main.c:960:39: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
+  960 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:147:1: note: include '<math.h>' or provide a declaration of 'powf'
+  146 | #include <stdio.h>
+  +++ |+#include <math.h>
+  147 | 
+../Core/Src/main.c:960:39: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
+  960 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:960:39: note: include '<math.h>' or provide a declaration of 'powf'
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:972:19: error: unknown type name 'PID_Controller'
+  972 | float PID_Compute(PID_Controller *pid, float setpoint, float medido, float dt) {
+      |                   ^~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'StartIMU_Task':
+../Core/Src/main.c:1036:20: error: unknown type name 'PID_Controller'
+ 1036 |             static PID_Controller pidPitch = {1.2f, 0.01f, 0.5f, 0, 0, 500};
+      |                    ^~~~~~~~~~~~~~
+../Core/Src/main.c:1036:53: warning: excess elements in scalar initializer
+ 1036 |             static PID_Controller pidPitch = {1.2f, 0.01f, 0.5f, 0, 0, 500};
+      |                                                     ^~~~~
+../Core/Src/main.c:1036:53: note: (near initialization for 'pidPitch')
+../Core/Src/main.c:1036:60: warning: excess elements in scalar initializer
+ 1036 |             static PID_Controller pidPitch = {1.2f, 0.01f, 0.5f, 0, 0, 500};
+      |                                                            ^~~~
+../Core/Src/main.c:1036:60: note: (near initialization for 'pidPitch')
+../Core/Src/main.c:1036:66: warning: excess elements in scalar initializer
+ 1036 |             static PID_Controller pidPitch = {1.2f, 0.01f, 0.5f, 0, 0, 500};
+      |                                                                  ^
+../Core/Src/main.c:1036:66: note: (near initialization for 'pidPitch')
+../Core/Src/main.c:1036:69: warning: excess elements in scalar initializer
+ 1036 |             static PID_Controller pidPitch = {1.2f, 0.01f, 0.5f, 0, 0, 500};
+      |                                                                     ^
+../Core/Src/main.c:1036:69: note: (near initialization for 'pidPitch')
+../Core/Src/main.c:1036:72: warning: excess elements in scalar initializer
+ 1036 |             static PID_Controller pidPitch = {1.2f, 0.01f, 0.5f, 0, 0, 500};
+      |                                                                        ^~~
+../Core/Src/main.c:1036:72: note: (near initialization for 'pidPitch')
+../Core/Src/main.c:1037:20: error: unknown type name 'PID_Controller'
+ 1037 |             static PID_Controller pidRoll  = {1.2f, 0.01f, 0.5f, 0, 0, 500};
+      |                    ^~~~~~~~~~~~~~
+../Core/Src/main.c:1037:53: warning: excess elements in scalar initializer
+ 1037 |             static PID_Controller pidRoll  = {1.2f, 0.01f, 0.5f, 0, 0, 500};
+      |                                                     ^~~~~
+../Core/Src/main.c:1037:53: note: (near initialization for 'pidRoll')
+../Core/Src/main.c:1037:60: warning: excess elements in scalar initializer
+ 1037 |             static PID_Controller pidRoll  = {1.2f, 0.01f, 0.5f, 0, 0, 500};
+      |                                                            ^~~~
+../Core/Src/main.c:1037:60: note: (near initialization for 'pidRoll')
+../Core/Src/main.c:1037:66: warning: excess elements in scalar initializer
+ 1037 |             static PID_Controller pidRoll  = {1.2f, 0.01f, 0.5f, 0, 0, 500};
+      |                                                                  ^
+../Core/Src/main.c:1037:66: note: (near initialization for 'pidRoll')
+../Core/Src/main.c:1037:69: warning: excess elements in scalar initializer
+ 1037 |             static PID_Controller pidRoll  = {1.2f, 0.01f, 0.5f, 0, 0, 500};
+      |                                                                     ^
+../Core/Src/main.c:1037:69: note: (near initialization for 'pidRoll')
+../Core/Src/main.c:1037:72: warning: excess elements in scalar initializer
+ 1037 |             static PID_Controller pidRoll  = {1.2f, 0.01f, 0.5f, 0, 0, 500};
+      |                                                                        ^~~
+../Core/Src/main.c:1037:72: note: (near initialization for 'pidRoll')
+../Core/Src/main.c:1038:20: error: unknown type name 'PID_Controller'
+ 1038 |             static PID_Controller pidYaw = {2.0f, 0.02f, 0.0f, 0, 0, 400};
+      |                    ^~~~~~~~~~~~~~
+../Core/Src/main.c:1038:51: warning: excess elements in scalar initializer
+ 1038 |             static PID_Controller pidYaw = {2.0f, 0.02f, 0.0f, 0, 0, 400};
+      |                                                   ^~~~~
+../Core/Src/main.c:1038:51: note: (near initialization for 'pidYaw')
+../Core/Src/main.c:1038:58: warning: excess elements in scalar initializer
+ 1038 |             static PID_Controller pidYaw = {2.0f, 0.02f, 0.0f, 0, 0, 400};
+      |                                                          ^~~~
+../Core/Src/main.c:1038:58: note: (near initialization for 'pidYaw')
+../Core/Src/main.c:1038:64: warning: excess elements in scalar initializer
+ 1038 |             static PID_Controller pidYaw = {2.0f, 0.02f, 0.0f, 0, 0, 400};
+      |                                                                ^
+../Core/Src/main.c:1038:64: note: (near initialization for 'pidYaw')
+../Core/Src/main.c:1038:67: warning: excess elements in scalar initializer
+ 1038 |             static PID_Controller pidYaw = {2.0f, 0.02f, 0.0f, 0, 0, 400};
+      |                                                                   ^
+../Core/Src/main.c:1038:67: note: (near initialization for 'pidYaw')
+../Core/Src/main.c:1038:70: warning: excess elements in scalar initializer
+ 1038 |             static PID_Controller pidYaw = {2.0f, 0.02f, 0.0f, 0, 0, 400};
+      |                                                                      ^~~
+../Core/Src/main.c:1038:70: note: (near initialization for 'pidYaw')
+../Core/Src/main.c:1054:45: warning: implicit declaration of function 'atan2f' [-Wimplicit-function-declaration]
+ 1054 |                         float accel_pitch = atan2f(ay, az) * 57.2958f;
+      |                                             ^~~~~~
+../Core/Src/main.c:1054:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1054:45: warning: incompatible implicit declaration of built-in function 'atan2f' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1054:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1055:57: warning: implicit declaration of function 'sqrtf' [-Wimplicit-function-declaration]
+ 1055 |                         float accel_roll  = atan2f(-ax, sqrtf(ay*ay + az*az)) * 57.2958f;
+      |                                                         ^~~~~
+../Core/Src/main.c:1055:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+../Core/Src/main.c:1055:57: warning: incompatible implicit declaration of built-in function 'sqrtf' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1055:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+../Core/Src/main.c:1063:58: warning: implicit declaration of function 'PID_Compute' [-Wimplicit-function-declaration]
+ 1063 |                                         float outPitch = PID_Compute(&pidPitch, 0.0f, pitch, dt);
+      |                                                          ^~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:40: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+22:05:38 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'Leer_Sensor_Baro':
+../Core/Src/main.c:969:39: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
+  969 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:156:1: note: include '<math.h>' or provide a declaration of 'powf'
+  155 | #include <stdio.h>
+  +++ |+#include <math.h>
+  156 | 
+../Core/Src/main.c:969:39: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
+  969 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:969:39: note: include '<math.h>' or provide a declaration of 'powf'
+../Core/Src/main.c: In function 'StartIMU_Task':
+../Core/Src/main.c:1063:45: warning: implicit declaration of function 'atan2f' [-Wimplicit-function-declaration]
+ 1063 |                         float accel_pitch = atan2f(ay, az) * 57.2958f;
+      |                                             ^~~~~~
+../Core/Src/main.c:1063:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1063:45: warning: incompatible implicit declaration of built-in function 'atan2f' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1063:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1064:57: warning: implicit declaration of function 'sqrtf' [-Wimplicit-function-declaration]
+ 1064 |                         float accel_roll  = atan2f(-ax, sqrtf(ay*ay + az*az)) * 57.2958f;
+      |                                                         ^~~~~
+../Core/Src/main.c:1064:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+../Core/Src/main.c:1064:57: warning: incompatible implicit declaration of built-in function 'sqrtf' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1064:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+arm-none-eabi-gcc -o "IMU_Bar_Semaphores.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\admin\Desktop\Aerospace_Training\IMU_Bar_Semaphores\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IMU_Bar_Semaphores.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: IMU_Bar_Semaphores.elf
+ 
+arm-none-eabi-size   IMU_Bar_Semaphores.elf 
+arm-none-eabi-objdump -h -S  IMU_Bar_Semaphores.elf  > "IMU_Bar_Semaphores.list"
+   text	   data	    bss	    dec	    hex	filename
+  71456	    556	  22916	  94928	  172d0	IMU_Bar_Semaphores.elf
+Finished building: default.size.stdout
+ 
+Finished building: IMU_Bar_Semaphores.list
+ 
+22:05:44 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-size   IMU_Bar_Semaphores.elf 
+   text	   data	    bss	    dec	    hex	filename
+  71456	    556	  22916	  94928	  172d0	IMU_Bar_Semaphores.elf
+Finished building: default.size.stdout
+ 
+22:21:35 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'Leer_Sensor_Baro':
+../Core/Src/main.c:972:39: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:159:1: note: include '<math.h>' or provide a declaration of 'powf'
+  158 | #include <stdio.h>
+  +++ |+#include <math.h>
+  159 | 
+../Core/Src/main.c:972:39: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:972:39: note: include '<math.h>' or provide a declaration of 'powf'
+../Core/Src/main.c: In function 'StartIMU_Task':
+../Core/Src/main.c:1080:45: warning: implicit declaration of function 'atan2f' [-Wimplicit-function-declaration]
+ 1080 |                         float accel_pitch = atan2f(ay, az) * 57.2958f;
+      |                                             ^~~~~~
+../Core/Src/main.c:1080:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1080:45: warning: incompatible implicit declaration of built-in function 'atan2f' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1080:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1081:57: warning: implicit declaration of function 'sqrtf' [-Wimplicit-function-declaration]
+ 1081 |                         float accel_roll  = atan2f(-ax, sqrtf(ay*ay + az*az)) * 57.2958f;
+      |                                                         ^~~~~
+../Core/Src/main.c:1081:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+../Core/Src/main.c:1081:57: warning: incompatible implicit declaration of built-in function 'sqrtf' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1081:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+../Core/Src/main.c:1103:65: error: 'altitud' undeclared (first use in this function)
+ 1103 |                                         datos_nuevos.altitud  = altitud;    // (Si ya la tienes calculada)
+      |                                                                 ^~~~~~~
+../Core/Src/main.c:1103:65: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c: In function 'StartTelemetry_Task':
+../Core/Src/main.c:1146:63: error: 'IMU_Data_t' has no member named 'z'
+ 1146 |                        imu_data.pitch, imu_data.roll, imu_data.z, altitud_data);
+      |                                                               ^
+make: *** [Core/Src/subdir.mk:40: Core/Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+22:23:49 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'Leer_Sensor_Baro':
+../Core/Src/main.c:972:39: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:159:1: note: include '<math.h>' or provide a declaration of 'powf'
+  158 | #include <stdio.h>
+  +++ |+#include <math.h>
+  159 | 
+../Core/Src/main.c:972:39: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:972:39: note: include '<math.h>' or provide a declaration of 'powf'
+../Core/Src/main.c: In function 'StartIMU_Task':
+../Core/Src/main.c:1080:45: warning: implicit declaration of function 'atan2f' [-Wimplicit-function-declaration]
+ 1080 |                         float accel_pitch = atan2f(ay, az) * 57.2958f;
+      |                                             ^~~~~~
+../Core/Src/main.c:1080:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1080:45: warning: incompatible implicit declaration of built-in function 'atan2f' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1080:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1081:57: warning: implicit declaration of function 'sqrtf' [-Wimplicit-function-declaration]
+ 1081 |                         float accel_roll  = atan2f(-ax, sqrtf(ay*ay + az*az)) * 57.2958f;
+      |                                                         ^~~~~
+../Core/Src/main.c:1081:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+../Core/Src/main.c:1081:57: warning: incompatible implicit declaration of built-in function 'sqrtf' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1081:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+../Core/Src/main.c: In function 'StartTelemetry_Task':
+../Core/Src/main.c:1146:63: error: 'IMU_Data_t' has no member named 'z'
+ 1146 |                        imu_data.pitch, imu_data.roll, imu_data.z, altitud_data);
+      |                                                               ^
+make: *** [Core/Src/subdir.mk:40: Core/Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+22:25:03 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'Leer_Sensor_Baro':
+../Core/Src/main.c:972:39: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:159:1: note: include '<math.h>' or provide a declaration of 'powf'
+  158 | #include <stdio.h>
+  +++ |+#include <math.h>
+  159 | 
+../Core/Src/main.c:972:39: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:972:39: note: include '<math.h>' or provide a declaration of 'powf'
+../Core/Src/main.c: In function 'StartIMU_Task':
+../Core/Src/main.c:1080:45: warning: implicit declaration of function 'atan2f' [-Wimplicit-function-declaration]
+ 1080 |                         float accel_pitch = atan2f(ay, az) * 57.2958f;
+      |                                             ^~~~~~
+../Core/Src/main.c:1080:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1080:45: warning: incompatible implicit declaration of built-in function 'atan2f' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1080:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1081:57: warning: implicit declaration of function 'sqrtf' [-Wimplicit-function-declaration]
+ 1081 |                         float accel_roll  = atan2f(-ax, sqrtf(ay*ay + az*az)) * 57.2958f;
+      |                                                         ^~~~~
+../Core/Src/main.c:1081:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+../Core/Src/main.c:1081:57: warning: incompatible implicit declaration of built-in function 'sqrtf' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1081:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+arm-none-eabi-gcc -o "IMU_Bar_Semaphores.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\admin\Desktop\Aerospace_Training\IMU_Bar_Semaphores\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IMU_Bar_Semaphores.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: IMU_Bar_Semaphores.elf
+ 
+arm-none-eabi-size   IMU_Bar_Semaphores.elf 
+arm-none-eabi-objdump -h -S  IMU_Bar_Semaphores.elf  > "IMU_Bar_Semaphores.list"
+   text	   data	    bss	    dec	    hex	filename
+  71552	    556	  22924	  95032	  17338	IMU_Bar_Semaphores.elf
+Finished building: default.size.stdout
+ 
+Finished building: IMU_Bar_Semaphores.list
+ 
+22:25:08 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-size   IMU_Bar_Semaphores.elf 
+   text	   data	    bss	    dec	    hex	filename
+  71552	    556	  22924	  95032	  17338	IMU_Bar_Semaphores.elf
+Finished building: default.size.stdout
+ 
+22:28:06 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'Leer_Sensor_Baro':
+../Core/Src/main.c:972:39: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:159:1: note: include '<math.h>' or provide a declaration of 'powf'
+  158 | #include <stdio.h>
+  +++ |+#include <math.h>
+  159 | 
+../Core/Src/main.c:972:39: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:972:39: note: include '<math.h>' or provide a declaration of 'powf'
+../Core/Src/main.c: In function 'StartIMU_Task':
+../Core/Src/main.c:1080:45: warning: implicit declaration of function 'atan2f' [-Wimplicit-function-declaration]
+ 1080 |                         float accel_pitch = atan2f(ay, az) * 57.2958f;
+      |                                             ^~~~~~
+../Core/Src/main.c:1080:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1080:45: warning: incompatible implicit declaration of built-in function 'atan2f' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1080:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1081:57: warning: implicit declaration of function 'sqrtf' [-Wimplicit-function-declaration]
+ 1081 |                         float accel_roll  = atan2f(-ax, sqrtf(ay*ay + az*az)) * 57.2958f;
+      |                                                         ^~~~~
+../Core/Src/main.c:1081:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+../Core/Src/main.c:1081:57: warning: incompatible implicit declaration of built-in function 'sqrtf' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1081:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+arm-none-eabi-gcc -o "IMU_Bar_Semaphores.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\admin\Desktop\Aerospace_Training\IMU_Bar_Semaphores\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IMU_Bar_Semaphores.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: IMU_Bar_Semaphores.elf
+ 
+arm-none-eabi-size   IMU_Bar_Semaphores.elf 
+arm-none-eabi-objdump -h -S  IMU_Bar_Semaphores.elf  > "IMU_Bar_Semaphores.list"
+   text	   data	    bss	    dec	    hex	filename
+  71592	    556	  22924	  95072	  17360	IMU_Bar_Semaphores.elf
+Finished building: default.size.stdout
+ 
+Finished building: IMU_Bar_Semaphores.list
+ 
+22:39:04 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'Leer_Sensor_Baro':
+../Core/Src/main.c:972:39: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:159:1: note: include '<math.h>' or provide a declaration of 'powf'
+  158 | #include <stdio.h>
+  +++ |+#include <math.h>
+  159 | 
+../Core/Src/main.c:972:39: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:972:39: note: include '<math.h>' or provide a declaration of 'powf'
+../Core/Src/main.c: In function 'StartIMU_Task':
+../Core/Src/main.c:1080:45: warning: implicit declaration of function 'atan2f' [-Wimplicit-function-declaration]
+ 1080 |                         float accel_pitch = atan2f(ay, az) * 57.2958f;
+      |                                             ^~~~~~
+../Core/Src/main.c:1080:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1080:45: warning: incompatible implicit declaration of built-in function 'atan2f' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1080:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1081:57: warning: implicit declaration of function 'sqrtf' [-Wimplicit-function-declaration]
+ 1081 |                         float accel_roll  = atan2f(-ax, sqrtf(ay*ay + az*az)) * 57.2958f;
+      |                                                         ^~~~~
+../Core/Src/main.c:1081:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+../Core/Src/main.c:1081:57: warning: incompatible implicit declaration of built-in function 'sqrtf' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1081:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+../Core/Src/main.c:1091:47: error: redefinition of 'outPitch'
+ 1091 |                                         float outPitch = PID_Compute(&pidPitch, 0.0f, pitch, dt);
+      |                                               ^~~~~~~~
+../Core/Src/main.c:1087:31: note: previous definition of 'outPitch' with type 'float'
+ 1087 |                         float outPitch = PID_Compute(&pidPitch, 0.0f, 10.0f, 0.01f);
+      |                               ^~~~~~~~
+make: *** [Core/Src/subdir.mk:40: Core/Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+22:39:35 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'Leer_Sensor_Baro':
+../Core/Src/main.c:972:39: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:159:1: note: include '<math.h>' or provide a declaration of 'powf'
+  158 | #include <stdio.h>
+  +++ |+#include <math.h>
+  159 | 
+../Core/Src/main.c:972:39: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:972:39: note: include '<math.h>' or provide a declaration of 'powf'
+../Core/Src/main.c: In function 'StartIMU_Task':
+../Core/Src/main.c:1080:45: warning: implicit declaration of function 'atan2f' [-Wimplicit-function-declaration]
+ 1080 |                         float accel_pitch = atan2f(ay, az) * 57.2958f;
+      |                                             ^~~~~~
+../Core/Src/main.c:1080:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1080:45: warning: incompatible implicit declaration of built-in function 'atan2f' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1080:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1081:57: warning: implicit declaration of function 'sqrtf' [-Wimplicit-function-declaration]
+ 1081 |                         float accel_roll  = atan2f(-ax, sqrtf(ay*ay + az*az)) * 57.2958f;
+      |                                                         ^~~~~
+../Core/Src/main.c:1081:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+../Core/Src/main.c:1081:57: warning: incompatible implicit declaration of built-in function 'sqrtf' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1081:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+arm-none-eabi-gcc -o "IMU_Bar_Semaphores.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\admin\Desktop\Aerospace_Training\IMU_Bar_Semaphores\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IMU_Bar_Semaphores.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: IMU_Bar_Semaphores.elf
+ 
+arm-none-eabi-size   IMU_Bar_Semaphores.elf 
+arm-none-eabi-objdump -h -S  IMU_Bar_Semaphores.elf  > "IMU_Bar_Semaphores.list"
+   text	   data	    bss	    dec	    hex	filename
+  71624	    556	  22924	  95104	  17380	IMU_Bar_Semaphores.elf
+Finished building: default.size.stdout
+ 
+Finished building: IMU_Bar_Semaphores.list
+ 
+22:39:38 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-size   IMU_Bar_Semaphores.elf 
+   text	   data	    bss	    dec	    hex	filename
+  71624	    556	  22924	  95104	  17380	IMU_Bar_Semaphores.elf
+Finished building: default.size.stdout
+ 
+22:44:52 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'Leer_Sensor_Baro':
+../Core/Src/main.c:972:39: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:159:1: note: include '<math.h>' or provide a declaration of 'powf'
+  158 | #include <stdio.h>
+  +++ |+#include <math.h>
+  159 | 
+../Core/Src/main.c:972:39: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:972:39: note: include '<math.h>' or provide a declaration of 'powf'
+../Core/Src/main.c: In function 'StartIMU_Task':
+../Core/Src/main.c:1080:45: warning: implicit declaration of function 'atan2f' [-Wimplicit-function-declaration]
+ 1080 |                         float accel_pitch = atan2f(ay, az) * 57.2958f;
+      |                                             ^~~~~~
+../Core/Src/main.c:1080:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1080:45: warning: incompatible implicit declaration of built-in function 'atan2f' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1080:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1081:57: warning: implicit declaration of function 'sqrtf' [-Wimplicit-function-declaration]
+ 1081 |                         float accel_roll  = atan2f(-ax, sqrtf(ay*ay + az*az)) * 57.2958f;
+      |                                                         ^~~~~
+../Core/Src/main.c:1081:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+../Core/Src/main.c:1081:57: warning: incompatible implicit declaration of built-in function 'sqrtf' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1081:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+arm-none-eabi-gcc -o "IMU_Bar_Semaphores.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\admin\Desktop\Aerospace_Training\IMU_Bar_Semaphores\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IMU_Bar_Semaphores.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: IMU_Bar_Semaphores.elf
+ 
+arm-none-eabi-size   IMU_Bar_Semaphores.elf 
+arm-none-eabi-objdump -h -S  IMU_Bar_Semaphores.elf  > "IMU_Bar_Semaphores.list"
+   text	   data	    bss	    dec	    hex	filename
+  71624	    556	  22924	  95104	  17380	IMU_Bar_Semaphores.elf
+Finished building: default.size.stdout
+ 
+Finished building: IMU_Bar_Semaphores.list
+ 
+22:47:43 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'Leer_Sensor_Baro':
+../Core/Src/main.c:972:39: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:159:1: note: include '<math.h>' or provide a declaration of 'powf'
+  158 | #include <stdio.h>
+  +++ |+#include <math.h>
+  159 | 
+../Core/Src/main.c:972:39: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:972:39: note: include '<math.h>' or provide a declaration of 'powf'
+../Core/Src/main.c: In function 'StartIMU_Task':
+../Core/Src/main.c:1082:45: warning: implicit declaration of function 'atan2f' [-Wimplicit-function-declaration]
+ 1082 |                         float accel_pitch = atan2f(ay, az) * 57.2958f;
+      |                                             ^~~~~~
+../Core/Src/main.c:1082:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1082:45: warning: incompatible implicit declaration of built-in function 'atan2f' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1082:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1083:57: warning: implicit declaration of function 'sqrtf' [-Wimplicit-function-declaration]
+ 1083 |                         float accel_roll  = atan2f(-ax, sqrtf(ay*ay + az*az)) * 57.2958f;
+      |                                                         ^~~~~
+../Core/Src/main.c:1083:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+../Core/Src/main.c:1083:57: warning: incompatible implicit declaration of built-in function 'sqrtf' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1083:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+arm-none-eabi-gcc -o "IMU_Bar_Semaphores.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\admin\Desktop\Aerospace_Training\IMU_Bar_Semaphores\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IMU_Bar_Semaphores.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: IMU_Bar_Semaphores.elf
+ 
+arm-none-eabi-size   IMU_Bar_Semaphores.elf 
+arm-none-eabi-objdump -h -S  IMU_Bar_Semaphores.elf  > "IMU_Bar_Semaphores.list"
+   text	   data	    bss	    dec	    hex	filename
+  71624	    556	  22924	  95104	  17380	IMU_Bar_Semaphores.elf
+Finished building: default.size.stdout
+ 
+Finished building: IMU_Bar_Semaphores.list
+ 
+22:51:47 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'Leer_Sensor_Baro':
+../Core/Src/main.c:972:39: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:159:1: note: include '<math.h>' or provide a declaration of 'powf'
+  158 | #include <stdio.h>
+  +++ |+#include <math.h>
+  159 | 
+../Core/Src/main.c:972:39: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:972:39: note: include '<math.h>' or provide a declaration of 'powf'
+../Core/Src/main.c: In function 'StartIMU_Task':
+../Core/Src/main.c:1082:45: warning: implicit declaration of function 'atan2f' [-Wimplicit-function-declaration]
+ 1082 |                         float accel_pitch = atan2f(ay, az) * 57.2958f;
+      |                                             ^~~~~~
+../Core/Src/main.c:1082:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1082:45: warning: incompatible implicit declaration of built-in function 'atan2f' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1082:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1083:57: warning: implicit declaration of function 'sqrtf' [-Wimplicit-function-declaration]
+ 1083 |                         float accel_roll  = atan2f(-ax, sqrtf(ay*ay + az*az)) * 57.2958f;
+      |                                                         ^~~~~
+../Core/Src/main.c:1083:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+../Core/Src/main.c:1083:57: warning: incompatible implicit declaration of built-in function 'sqrtf' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1083:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+arm-none-eabi-gcc -o "IMU_Bar_Semaphores.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\admin\Desktop\Aerospace_Training\IMU_Bar_Semaphores\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IMU_Bar_Semaphores.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: IMU_Bar_Semaphores.elf
+ 
+arm-none-eabi-size   IMU_Bar_Semaphores.elf 
+arm-none-eabi-objdump -h -S  IMU_Bar_Semaphores.elf  > "IMU_Bar_Semaphores.list"
+   text	   data	    bss	    dec	    hex	filename
+  71624	    556	  22924	  95104	  17380	IMU_Bar_Semaphores.elf
+Finished building: default.size.stdout
+ 
+Finished building: IMU_Bar_Semaphores.list
+ 
+22:54:31 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'Leer_Sensor_Baro':
+../Core/Src/main.c:972:39: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:159:1: note: include '<math.h>' or provide a declaration of 'powf'
+  158 | #include <stdio.h>
+  +++ |+#include <math.h>
+  159 | 
+../Core/Src/main.c:972:39: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:972:39: note: include '<math.h>' or provide a declaration of 'powf'
+../Core/Src/main.c: In function 'StartIMU_Task':
+../Core/Src/main.c:1082:45: warning: implicit declaration of function 'atan2f' [-Wimplicit-function-declaration]
+ 1082 |                         float accel_pitch = atan2f(ay, az) * 57.2958f;
+      |                                             ^~~~~~
+../Core/Src/main.c:1082:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1082:45: warning: incompatible implicit declaration of built-in function 'atan2f' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1082:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1083:57: warning: implicit declaration of function 'sqrtf' [-Wimplicit-function-declaration]
+ 1083 |                         float accel_roll  = atan2f(-ax, sqrtf(ay*ay + az*az)) * 57.2958f;
+      |                                                         ^~~~~
+../Core/Src/main.c:1083:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+../Core/Src/main.c:1083:57: warning: incompatible implicit declaration of built-in function 'sqrtf' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1083:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+arm-none-eabi-gcc -o "IMU_Bar_Semaphores.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\admin\Desktop\Aerospace_Training\IMU_Bar_Semaphores\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IMU_Bar_Semaphores.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: IMU_Bar_Semaphores.elf
+ 
+arm-none-eabi-size   IMU_Bar_Semaphores.elf 
+arm-none-eabi-objdump -h -S  IMU_Bar_Semaphores.elf  > "IMU_Bar_Semaphores.list"
+   text	   data	    bss	    dec	    hex	filename
+  71672	    556	  22924	  95152	  173b0	IMU_Bar_Semaphores.elf
+Finished building: default.size.stdout
+ 
+Finished building: IMU_Bar_Semaphores.list
+ 
+22:59:19 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'Leer_Sensor_Baro':
+../Core/Src/main.c:972:39: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:159:1: note: include '<math.h>' or provide a declaration of 'powf'
+  158 | #include <stdio.h>
+  +++ |+#include <math.h>
+  159 | 
+../Core/Src/main.c:972:39: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:972:39: note: include '<math.h>' or provide a declaration of 'powf'
+../Core/Src/main.c: In function 'StartIMU_Task':
+../Core/Src/main.c:1081:45: warning: implicit declaration of function 'atan2f' [-Wimplicit-function-declaration]
+ 1081 |                         float accel_pitch = atan2f(ay, az) * 57.2958f;
+      |                                             ^~~~~~
+../Core/Src/main.c:1081:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1081:45: warning: incompatible implicit declaration of built-in function 'atan2f' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1081:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1082:57: warning: implicit declaration of function 'sqrtf' [-Wimplicit-function-declaration]
+ 1082 |                         float accel_roll  = atan2f(-ax, sqrtf(ay*ay + az*az)) * 57.2958f;
+      |                                                         ^~~~~
+../Core/Src/main.c:1082:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+../Core/Src/main.c:1082:57: warning: incompatible implicit declaration of built-in function 'sqrtf' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1082:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+arm-none-eabi-gcc -o "IMU_Bar_Semaphores.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\admin\Desktop\Aerospace_Training\IMU_Bar_Semaphores\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IMU_Bar_Semaphores.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: IMU_Bar_Semaphores.elf
+ 
+arm-none-eabi-size   IMU_Bar_Semaphores.elf 
+arm-none-eabi-objdump -h -S  IMU_Bar_Semaphores.elf  > "IMU_Bar_Semaphores.list"
+   text	   data	    bss	    dec	    hex	filename
+  71608	    556	  22924	  95088	  17370	IMU_Bar_Semaphores.elf
+Finished building: default.size.stdout
+ 
+Finished building: IMU_Bar_Semaphores.list
+ 
+23:06:13 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'Leer_Sensor_Baro':
+../Core/Src/main.c:972:39: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:159:1: note: include '<math.h>' or provide a declaration of 'powf'
+  158 | #include <stdio.h>
+  +++ |+#include <math.h>
+  159 | 
+../Core/Src/main.c:972:39: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:972:39: note: include '<math.h>' or provide a declaration of 'powf'
+../Core/Src/main.c: In function 'PID_Compute':
+../Core/Src/main.c:995:32: error: 'I' undeclared (first use in this function)
+  995 |             float salida = P + I + D;
+      |                                ^
+../Core/Src/main.c:995:32: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:995:36: error: 'D' undeclared (first use in this function)
+  995 |             float salida = P + I + D;
+      |                                    ^
+../Core/Src/main.c: In function 'StartIMU_Task':
+../Core/Src/main.c:1074:45: warning: implicit declaration of function 'atan2f' [-Wimplicit-function-declaration]
+ 1074 |                         float accel_pitch = atan2f(ay, az) * 57.2958f;
+      |                                             ^~~~~~
+../Core/Src/main.c:1074:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1074:45: warning: incompatible implicit declaration of built-in function 'atan2f' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1074:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1075:57: warning: implicit declaration of function 'sqrtf' [-Wimplicit-function-declaration]
+ 1075 |                         float accel_roll  = atan2f(-ax, sqrtf(ay*ay + az*az)) * 57.2958f;
+      |                                                         ^~~~~
+../Core/Src/main.c:1075:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+../Core/Src/main.c:1075:57: warning: incompatible implicit declaration of built-in function 'sqrtf' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1075:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+make: *** [Core/Src/subdir.mk:40: Core/Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+23:07:53 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'Leer_Sensor_Baro':
+../Core/Src/main.c:972:39: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:159:1: note: include '<math.h>' or provide a declaration of 'powf'
+  158 | #include <stdio.h>
+  +++ |+#include <math.h>
+  159 | 
+../Core/Src/main.c:972:39: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:972:39: note: include '<math.h>' or provide a declaration of 'powf'
+../Core/Src/main.c: In function 'StartIMU_Task':
+../Core/Src/main.c:1092:45: warning: implicit declaration of function 'atan2f' [-Wimplicit-function-declaration]
+ 1092 |                         float accel_pitch = atan2f(ay, az) * 57.2958f;
+      |                                             ^~~~~~
+../Core/Src/main.c:1092:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1092:45: warning: incompatible implicit declaration of built-in function 'atan2f' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1092:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1093:57: warning: implicit declaration of function 'sqrtf' [-Wimplicit-function-declaration]
+ 1093 |                         float accel_roll  = atan2f(-ax, sqrtf(ay*ay + az*az)) * 57.2958f;
+      |                                                         ^~~~~
+../Core/Src/main.c:1093:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+../Core/Src/main.c:1093:57: warning: incompatible implicit declaration of built-in function 'sqrtf' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1093:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+arm-none-eabi-gcc -o "IMU_Bar_Semaphores.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\admin\Desktop\Aerospace_Training\IMU_Bar_Semaphores\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IMU_Bar_Semaphores.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: IMU_Bar_Semaphores.elf
+ 
+arm-none-eabi-size   IMU_Bar_Semaphores.elf 
+arm-none-eabi-objdump -h -S  IMU_Bar_Semaphores.elf  > "IMU_Bar_Semaphores.list"
+   text	   data	    bss	    dec	    hex	filename
+  71656	    556	  22924	  95136	  173a0	IMU_Bar_Semaphores.elf
+Finished building: default.size.stdout
+ 
+Finished building: IMU_Bar_Semaphores.list
+ 
+23:07:55 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-size   IMU_Bar_Semaphores.elf 
+   text	   data	    bss	    dec	    hex	filename
+  71656	    556	  22924	  95136	  173a0	IMU_Bar_Semaphores.elf
+Finished building: default.size.stdout
+ 
+23:10:09 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'Leer_Sensor_Baro':
+../Core/Src/main.c:972:39: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:159:1: note: include '<math.h>' or provide a declaration of 'powf'
+  158 | #include <stdio.h>
+  +++ |+#include <math.h>
+  159 | 
+../Core/Src/main.c:972:39: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:972:39: note: include '<math.h>' or provide a declaration of 'powf'
+../Core/Src/main.c: In function 'StartIMU_Task':
+../Core/Src/main.c:1092:45: warning: implicit declaration of function 'atan2f' [-Wimplicit-function-declaration]
+ 1092 |                         float accel_pitch = atan2f(ay, az) * 57.2958f;
+      |                                             ^~~~~~
+../Core/Src/main.c:1092:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1092:45: warning: incompatible implicit declaration of built-in function 'atan2f' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1092:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1093:57: warning: implicit declaration of function 'sqrtf' [-Wimplicit-function-declaration]
+ 1093 |                         float accel_roll  = atan2f(-ax, sqrtf(ay*ay + az*az)) * 57.2958f;
+      |                                                         ^~~~~
+../Core/Src/main.c:1093:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+../Core/Src/main.c:1093:57: warning: incompatible implicit declaration of built-in function 'sqrtf' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1093:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+../Core/Src/main.c: In function 'StartTelemetry_Task':
+../Core/Src/main.c:1159:40: warning: 'imu_data.pitch' is used uninitialized [-Wuninitialized]
+ 1159 |                                imu_data.pitch, imu_data.roll, imu_data.outP,
+      |                                ~~~~~~~~^~~~~~
+../Core/Src/main.c:1143:20: note: 'imu_data' declared here
+ 1143 |         IMU_Data_t imu_data;
+      |                    ^~~~~~~~
+../Core/Src/main.c:1159:56: warning: 'imu_data.roll' is used uninitialized [-Wuninitialized]
+ 1159 |                                imu_data.pitch, imu_data.roll, imu_data.outP,
+      |                                                ~~~~~~~~^~~~~
+../Core/Src/main.c:1143:20: note: 'imu_data' declared here
+ 1143 |         IMU_Data_t imu_data;
+      |                    ^~~~~~~~
+../Core/Src/main.c:1159:71: warning: 'imu_data.outP' is used uninitialized [-Wuninitialized]
+ 1159 |                                imu_data.pitch, imu_data.roll, imu_data.outP,
+      |                                                               ~~~~~~~~^~~~~
+../Core/Src/main.c:1143:20: note: 'imu_data' declared here
+ 1143 |         IMU_Data_t imu_data;
+      |                    ^~~~~~~~
+../Core/Src/main.c:1160:40: warning: 'imu_data.outR' is used uninitialized [-Wuninitialized]
+ 1160 |                                imu_data.outR, imu_data.yaw_corr, altitud_data);
+      |                                ~~~~~~~~^~~~~
+../Core/Src/main.c:1143:20: note: 'imu_data' declared here
+ 1143 |         IMU_Data_t imu_data;
+      |                    ^~~~~~~~
+../Core/Src/main.c:1160:55: warning: 'imu_data.yaw_corr' is used uninitialized [-Wuninitialized]
+ 1160 |                                imu_data.outR, imu_data.yaw_corr, altitud_data);
+      |                                               ~~~~~~~~^~~~~~~~~
+../Core/Src/main.c:1143:20: note: 'imu_data' declared here
+ 1143 |         IMU_Data_t imu_data;
+      |                    ^~~~~~~~
+arm-none-eabi-gcc -o "IMU_Bar_Semaphores.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\admin\Desktop\Aerospace_Training\IMU_Bar_Semaphores\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IMU_Bar_Semaphores.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: IMU_Bar_Semaphores.elf
+ 
+arm-none-eabi-size   IMU_Bar_Semaphores.elf 
+arm-none-eabi-objdump -h -S  IMU_Bar_Semaphores.elf  > "IMU_Bar_Semaphores.list"
+   text	   data	    bss	    dec	    hex	filename
+  71664	    556	  22924	  95144	  173a8	IMU_Bar_Semaphores.elf
+Finished building: default.size.stdout
+ 
+Finished building: IMU_Bar_Semaphores.list
+ 
+23:12:41 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'Leer_Sensor_Baro':
+../Core/Src/main.c:972:39: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:159:1: note: include '<math.h>' or provide a declaration of 'powf'
+  158 | #include <stdio.h>
+  +++ |+#include <math.h>
+  159 | 
+../Core/Src/main.c:972:39: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:972:39: note: include '<math.h>' or provide a declaration of 'powf'
+../Core/Src/main.c: In function 'StartIMU_Task':
+../Core/Src/main.c:1096:45: warning: implicit declaration of function 'atan2f' [-Wimplicit-function-declaration]
+ 1096 |                         float accel_pitch = atan2f(ay, az) * 57.2958f;
+      |                                             ^~~~~~
+../Core/Src/main.c:1096:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1096:45: warning: incompatible implicit declaration of built-in function 'atan2f' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1096:45: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1097:57: warning: implicit declaration of function 'sqrtf' [-Wimplicit-function-declaration]
+ 1097 |                         float accel_roll  = atan2f(-ax, sqrtf(ay*ay + az*az)) * 57.2958f;
+      |                                                         ^~~~~
+../Core/Src/main.c:1097:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+../Core/Src/main.c:1097:57: warning: incompatible implicit declaration of built-in function 'sqrtf' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1097:57: note: include '<math.h>' or provide a declaration of 'sqrtf'
+arm-none-eabi-gcc -o "IMU_Bar_Semaphores.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\admin\Desktop\Aerospace_Training\IMU_Bar_Semaphores\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IMU_Bar_Semaphores.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: IMU_Bar_Semaphores.elf
+ 
+arm-none-eabi-size   IMU_Bar_Semaphores.elf 
+arm-none-eabi-objdump -h -S  IMU_Bar_Semaphores.elf  > "IMU_Bar_Semaphores.list"
+   text	   data	    bss	    dec	    hex	filename
+  71688	    556	  22924	  95168	  173c0	IMU_Bar_Semaphores.elf
+Finished building: default.size.stdout
+ 
+Finished building: IMU_Bar_Semaphores.list
+ 
+23:17:23 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'Leer_Sensor_Baro':
+../Core/Src/main.c:972:39: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:159:1: note: include '<math.h>' or provide a declaration of 'powf'
+  158 | #include <stdio.h>
+  +++ |+#include <math.h>
+  159 | 
+../Core/Src/main.c:972:39: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:972:39: note: include '<math.h>' or provide a declaration of 'powf'
+../Core/Src/main.c: In function 'StartIMU_Task':
+../Core/Src/main.c:1085:21: warning: implicit declaration of function 'Leer_IMU_Completa'; did you mean 'Leer_IMU_Completa_DMA'? [-Wimplicit-function-declaration]
+ 1085 |                     Leer_IMU_Completa();
+      |                     ^~~~~~~~~~~~~~~~~
+      |                     Leer_IMU_Completa_DMA
+../Core/Src/main.c:1095:59: error: 'pitch' undeclared (first use in this function)
+ 1095 |                 float outPitch = PID_Compute(&pidP, 0.0f, pitch, dt);
+      |                                                           ^~~~~
+../Core/Src/main.c:1095:59: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:1096:59: error: 'roll' undeclared (first use in this function)
+ 1096 |                 float outRoll  = PID_Compute(&pidR, 0.0f, roll, dt);
+      |                                                           ^~~~
+../Core/Src/main.c:1098:59: error: 'gz' undeclared (first use in this function)
+ 1098 |                 float outYaw   = PID_Compute(&pidY, 0.0f, gz, dt);
+      |                                                           ^~
+../Core/Src/main.c:1105:29: error: 'IMU_Data_t' has no member named 'outY'; did you mean 'outP'?
+ 1105 |                 datos_envio.outY  = outYaw;
+      |                             ^~~~
+      |                             outP
+make: *** [Core/Src/subdir.mk:40: Core/Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+23:22:26 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'Leer_Sensor_Baro':
+../Core/Src/main.c:972:39: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:159:1: note: include '<math.h>' or provide a declaration of 'powf'
+  158 | #include <stdio.h>
+  +++ |+#include <math.h>
+  159 | 
+../Core/Src/main.c:972:39: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
+  972 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:972:39: note: include '<math.h>' or provide a declaration of 'powf'
+../Core/Src/main.c: In function 'StartIMU_Task':
+../Core/Src/main.c:1083:17: warning: implicit declaration of function 'Leer_Sensor_IMU'; did you mean 'Leer_Sensor_Baro'? [-Wimplicit-function-declaration]
+ 1083 |                 Leer_Sensor_IMU();
+      |                 ^~~~~~~~~~~~~~~
+      |                 Leer_Sensor_Baro
+../Core/Src/main.c:1087:56: error: 'gy' undeclared (first use in this function)
+ 1087 |                 pitch_actual = 0.98f * (pitch_actual + gy * dt) + 0.02f * (accel_pitch);
+      |                                                        ^~
+../Core/Src/main.c:1087:56: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:1087:76: error: 'accel_pitch' undeclared (first use in this function)
+ 1087 |                 pitch_actual = 0.98f * (pitch_actual + gy * dt) + 0.02f * (accel_pitch);
+      |                                                                            ^~~~~~~~~~~
+../Core/Src/main.c:1088:55: error: 'gx' undeclared (first use in this function)
+ 1088 |                 roll_actual  = 0.98f * (roll_actual + gx * dt) + 0.02f * (accel_roll);
+      |                                                       ^~
+../Core/Src/main.c:1088:75: error: 'accel_roll' undeclared (first use in this function)
+ 1088 |                 roll_actual  = 0.98f * (roll_actual + gx * dt) + 0.02f * (accel_roll);
+      |                                                                           ^~~~~~~~~~
+../Core/Src/main.c:1099:29: error: 'IMU_Data_t' has no member named 'outY'; did you mean 'outP'?
+ 1099 |                 datos_envio.outY  = outYaw; // El que ya tenías calculado
+      |                             ^~~~
+      |                             outP
+../Core/Src/main.c:1099:37: error: 'outYaw' undeclared (first use in this function)
+ 1099 |                 datos_envio.outY  = outYaw; // El que ya tenías calculado
+      |                                     ^~~~~~
+make: *** [Core/Src/subdir.mk:40: Core/Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+23:24:16 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'Leer_Sensor_Baro':
+../Core/Src/main.c:970:39: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
+  970 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:157:1: note: include '<math.h>' or provide a declaration of 'powf'
+  156 | #include <stdio.h>
+  +++ |+#include <math.h>
+  157 | 
+../Core/Src/main.c:970:39: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
+  970 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:970:39: note: include '<math.h>' or provide a declaration of 'powf'
+../Core/Src/main.c: In function 'StartIMU_Task':
+../Core/Src/main.c:1081:17: warning: implicit declaration of function 'Leer_Sensor_IMU'; did you mean 'Leer_Sensor_Baro'? [-Wimplicit-function-declaration]
+ 1081 |                 Leer_Sensor_IMU();
+      |                 ^~~~~~~~~~~~~~~
+      |                 Leer_Sensor_Baro
+../Core/Src/main.c:1085:56: error: 'gy' undeclared (first use in this function)
+ 1085 |                 pitch_actual = 0.98f * (pitch_actual + gy * dt) + 0.02f * (accel_pitch);
+      |                                                        ^~
+../Core/Src/main.c:1085:56: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:1085:76: error: 'accel_pitch' undeclared (first use in this function)
+ 1085 |                 pitch_actual = 0.98f * (pitch_actual + gy * dt) + 0.02f * (accel_pitch);
+      |                                                                            ^~~~~~~~~~~
+../Core/Src/main.c:1086:55: error: 'gx' undeclared (first use in this function)
+ 1086 |                 roll_actual  = 0.98f * (roll_actual + gx * dt) + 0.02f * (accel_roll);
+      |                                                       ^~
+../Core/Src/main.c:1086:75: error: 'accel_roll' undeclared (first use in this function)
+ 1086 |                 roll_actual  = 0.98f * (roll_actual + gx * dt) + 0.02f * (accel_roll);
+      |                                                                           ^~~~~~~~~~
+../Core/Src/main.c:1097:37: error: 'outYaw' undeclared (first use in this function)
+ 1097 |                 datos_envio.outY  = outYaw; // El que ya tenías calculado
+      |                                     ^~~~~~
+../Core/Src/main.c: In function 'StartTelemetry_Task':
+../Core/Src/main.c:1135:55: error: 'IMU_Data_t' has no member named 'yaw_corr'
+ 1135 |                                imu_data.outR, imu_data.yaw_corr, altitud_data);
+      |                                                       ^
+make: *** [Core/Src/subdir.mk:40: Core/Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+23:25:52 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'Leer_Sensor_Baro':
+../Core/Src/main.c:970:39: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
+  970 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:157:1: note: include '<math.h>' or provide a declaration of 'powf'
+  156 | #include <stdio.h>
+  +++ |+#include <math.h>
+  157 | 
+../Core/Src/main.c:970:39: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
+  970 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:970:39: note: include '<math.h>' or provide a declaration of 'powf'
+../Core/Src/main.c: In function 'StartIMU_Task':
+../Core/Src/main.c:1083:21: warning: implicit declaration of function 'Leer_IMU_Completa'; did you mean 'Leer_IMU_Completa_DMA'? [-Wimplicit-function-declaration]
+ 1083 |                     Leer_IMU_Completa(); // Esta función debe actualizar ax, ay, az, gx, gy, gz
+      |                     ^~~~~~~~~~~~~~~~~
+      |                     Leer_IMU_Completa_DMA
+../Core/Src/main.c:1088:31: warning: implicit declaration of function 'atan2f' [-Wimplicit-function-declaration]
+ 1088 |                 float acc_p = atan2f(ay, az) * 57.2958f;
+      |                               ^~~~~~
+../Core/Src/main.c:1088:31: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1088:31: warning: incompatible implicit declaration of built-in function 'atan2f' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1088:31: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1088:38: error: 'ay' undeclared (first use in this function)
+ 1088 |                 float acc_p = atan2f(ay, az) * 57.2958f;
+      |                                      ^~
+../Core/Src/main.c:1088:38: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:1088:42: error: 'az' undeclared (first use in this function)
+ 1088 |                 float acc_p = atan2f(ay, az) * 57.2958f;
+      |                                          ^~
+../Core/Src/main.c:1089:39: error: 'ax' undeclared (first use in this function)
+ 1089 |                 float acc_r = atan2f(-ax, sqrtf(ay * ay + az * az)) * 57.2958f;
+      |                                       ^~
+../Core/Src/main.c:1089:43: warning: implicit declaration of function 'sqrtf' [-Wimplicit-function-declaration]
+ 1089 |                 float acc_r = atan2f(-ax, sqrtf(ay * ay + az * az)) * 57.2958f;
+      |                                           ^~~~~
+../Core/Src/main.c:1089:43: note: include '<math.h>' or provide a declaration of 'sqrtf'
+../Core/Src/main.c:1089:43: warning: incompatible implicit declaration of built-in function 'sqrtf' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1089:43: note: include '<math.h>' or provide a declaration of 'sqrtf'
+../Core/Src/main.c:1092:46: error: 'gy' undeclared (first use in this function)
+ 1092 |                 pitch_f = 0.98f * (pitch_f + gy * dt) + 0.02f * (acc_p);
+      |                                              ^~
+../Core/Src/main.c:1093:45: error: 'gx' undeclared (first use in this function)
+ 1093 |                 roll_f  = 0.98f * (roll_f + gx * dt) + 0.02f * (acc_r);
+      |                                             ^~
+../Core/Src/main.c:1098:25: error: 'IMU_Data_t' has no member named 'yaw_corr'
+ 1098 |                 imu_data.yaw_corr = PID_Compute(&pidYaw,   0.0f, gz,      dt);
+      |                         ^
+../Core/Src/main.c:1098:66: error: 'gz' undeclared (first use in this function)
+ 1098 |                 imu_data.yaw_corr = PID_Compute(&pidYaw,   0.0f, gz,      dt);
+      |                                                                  ^~
+../Core/Src/main.c: In function 'StartTelemetry_Task':
+../Core/Src/main.c:1141:55: error: 'IMU_Data_t' has no member named 'yaw_corr'
+ 1141 |                                imu_data.outR, imu_data.yaw_corr, altitud_data);
+      |                                                       ^
+make: *** [Core/Src/subdir.mk:40: Core/Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+23:30:27 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'Leer_Sensor_Baro':
+../Core/Src/main.c:973:39: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
+  973 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:160:1: note: include '<math.h>' or provide a declaration of 'powf'
+  159 | #include <stdio.h>
+  +++ |+#include <math.h>
+  160 | 
+../Core/Src/main.c:973:39: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
+  973 |         *altitud = 44330.0f * (1.0f - powf(*presion / P_referencia, 0.1902949f));
+      |                                       ^~~~
+../Core/Src/main.c:973:39: note: include '<math.h>' or provide a declaration of 'powf'
+../Core/Src/main.c: In function 'StartIMU_Task':
+../Core/Src/main.c:1092:27: warning: implicit declaration of function 'atan2f' [-Wimplicit-function-declaration]
+ 1092 |             float acc_p = atan2f(ay, az) * 57.2958f;
+      |                           ^~~~~~
+../Core/Src/main.c:1092:27: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1092:27: warning: incompatible implicit declaration of built-in function 'atan2f' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1092:27: note: include '<math.h>' or provide a declaration of 'atan2f'
+../Core/Src/main.c:1093:39: warning: implicit declaration of function 'sqrtf' [-Wimplicit-function-declaration]
+ 1093 |             float acc_r = atan2f(-ax, sqrtf(ay * ay + az * az)) * 57.2958f;
+      |                                       ^~~~~
+../Core/Src/main.c:1093:39: note: include '<math.h>' or provide a declaration of 'sqrtf'
+../Core/Src/main.c:1093:39: warning: incompatible implicit declaration of built-in function 'sqrtf' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:1093:39: note: include '<math.h>' or provide a declaration of 'sqrtf'
+arm-none-eabi-gcc -o "IMU_Bar_Semaphores.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\admin\Desktop\Aerospace_Training\IMU_Bar_Semaphores\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IMU_Bar_Semaphores.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: IMU_Bar_Semaphores.elf
+ 
+arm-none-eabi-size   IMU_Bar_Semaphores.elf 
+arm-none-eabi-objdump -h -S  IMU_Bar_Semaphores.elf  > "IMU_Bar_Semaphores.list"
+   text	   data	    bss	    dec	    hex	filename
+  71752	    556	  22948	  95256	  17418	IMU_Bar_Semaphores.elf
+Finished building: default.size.stdout
+ 
+Finished building: IMU_Bar_Semaphores.list
+ 
+23:30:29 **** Incremental Build of configuration Debug for project IMU_Bar_Semaphores ****
+make -j8 all 
+arm-none-eabi-size   IMU_Bar_Semaphores.elf 
+   text	   data	    bss	    dec	    hex	filename
+  71752	    556	  22948	  95256	  17418	IMU_Bar_Semaphores.elf
+Finished building: default.size.stdout
+ 

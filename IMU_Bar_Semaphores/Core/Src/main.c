@@ -69,7 +69,7 @@ const osThreadAttr_t BaroTask_attributes = {
 osThreadId_t IMU_TaskHandle;
 const osThreadAttr_t IMU_Task_attributes = {
   .name = "IMU_Task",
-  .stack_size = 256 * 4,
+  .stack_size = 512 * 4,
   .priority = (osPriority_t) osPriorityHigh,
 };
 /* Definitions for Telemetry_Task */
@@ -96,11 +96,21 @@ const osMutexAttr_t I2C2_Mutex_attributes = {
 };
 /* USER CODE BEGIN PV */
 typedef struct {
-	float pitch;
-	float roll;
-	float z;     // Yaw (DPS)
-	float altitud;
+	float pitch;      // Ángulo (lo que muestra la inclinación)
+	    float roll;       // Ángulo
+	    float outP;       // Salida del PID de Pitch (fuerza)
+	    float outR;       // Salida del PID de Roll (fuerza)
+	    float outY;       // Salida del PID de Yaw (la "Y" que mencionaste)
 } IMU_Data_t;
+
+typedef struct {
+    float Kp;           // Ganancia Proporcional
+    float Ki;           // Ganancia Integral
+    float Kd;           // Ganancia Derivativa
+    float integral;     // Acumulador para el término I
+    float error_previo; // Para el cálculo de la derivada
+    float limite_salida; // Evita saturar los motores
+} PID_Controller;
 
 IMU_Data_t datos_nuevos; // Declaración de la variable
 
@@ -109,6 +119,9 @@ IMU_Data_t datos_nuevos; // Declaración de la variable
 #define LPS22HB_ADDR (0x5D << 1)
 float P_referencia = 1013.25f; // Valor estándar inicial (hPa)
 float bias_x = 0, bias_y = 0, bias_z = 0; //para calibracion
+
+float ax, ay, az, gx, gy, gz; // Agregá estas si no las tenés
+float pitch = 0.0f, roll = 0.0f;
 
 osSemaphoreId_t i2c_dma_semHandle;
 const osSemaphoreAttr_t i2c_dma_sem_attributes = { .name = "i2c_dma_sem" };
@@ -138,6 +151,7 @@ void Calibrar_IMU(void);
 HAL_StatusTypeDef Leer_Sensor_Baro(float *presion, float *altitud);
 HAL_StatusTypeDef Leer_IMU_Completa_DMA(float *ax, float *ay, float *az, float *gx, float *gy, float *gz);
 void HAL_I2C_MemRxCpltCallback(I2C_HandleTypeDef *hi2c);
+float PID_Compute(PID_Controller *pid, float setpoint, float medido, float dt);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -227,7 +241,7 @@ int main(void)
   AltitudQueueHandle = osMessageQueueNew (5, sizeof(float), &AltitudQueue_attributes);
 
   /* creation of IMU_Queue */
-  IMU_QueueHandle = osMessageQueueNew (5, 12, &IMU_Queue_attributes);
+  IMU_QueueHandle = osMessageQueueNew (5, sizeof(IMU_Data_t), &IMU_Queue_attributes);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
@@ -967,6 +981,46 @@ void HAL_I2C_MemRxCpltCallback(I2C_HandleTypeDef *hi2c) {
         osSemaphoreRelease(i2c_dma_semHandle);
     }
 }
+
+float PID_Compute(PID_Controller *pid, float setpoint, float medido, float dt) {
+	// 1. Cálculo del error
+	    float error = setpoint - medido;
+
+	    // 2. Término Proporcional (P)
+	    float P = pid->Kp * error;
+
+	    // 3. Término Integral (I) con Anti-Windup
+	    // Evitamos acumular si el dt es basura o cero
+	    if (dt > 0.0f) {
+	        pid->integral += error * dt;
+	    }
+
+	    // Anti-windup: Limitamos la memoria de la integral
+	    if (pid->integral > 100.0f) pid->integral = 100.0f;
+	    else if (pid->integral < -100.0f) pid->integral = -100.0f;
+
+	    float I = pid->Ki * pid->integral; // <--- AQUÍ ESTÁ LA "I" QUE FALTABA
+
+	    // 4. Término Derivativo (D)
+	    float D = 0.0f;
+	    if (dt > 0.0f) {
+	        D = pid->Kd * (error - pid->error_previo) / dt;
+	    }
+
+	    // 5. Guardar error para la próxima iteración
+	    pid->error_previo = error;
+
+	    // 6. Salida total y Saturación
+	    float salida = P + I + D;
+
+	    // Si no definiste limite_salida, le ponemos uno por defecto (ej. 500)
+	    float limite = (pid->limite_salida <= 0.0f) ? 500.0f : pid->limite_salida;
+
+	    if (salida > limite) salida = limite;
+	    else if (salida < -limite) salida = -limite;
+
+	    return salida;
+}
 /* USER CODE END 4 */
 
 /* USER CODE BEGIN Header_StartBaroTask */
@@ -1016,39 +1070,47 @@ void StartBaroTask(void *argument)
 void StartIMU_Task(void *argument)
 {
   /* USER CODE BEGIN StartIMU_Task */
-	// 1. Estado del filtro (static para que no se borren)
-	    static float pitch = 0, roll = 0;
-	    const float dt = 0.01f; // 10ms
 
-	    // 2. Variables para datos crudos
-	    float ax, ay, az, gx, gy, gz;
+	// 1. Inicializamos los PID con los nombres de tu estructura
+	  static PID_Controller pidPitch = {1.2f, 0.01f, 0.5f, 0, 0, 500.0f};
+	  static PID_Controller pidRoll  = {1.2f, 0.01f, 0.5f, 0, 0, 500.0f};
+	  static PID_Controller pidYaw   = {0.8f, 0.01f, 0.0f, 0, 0, 500.0f};
 
-	    for(;;) {
-	        if (osMutexAcquire(I2C2_MutexHandle, osWaitForever) == osOK) {
+	  float dt = 0.01f; // 10ms
 
-	            // --- AQUÍ ESTABA EL ERROR: FALTABA LLAMAR A LA LECTURA ---
-	            if (Leer_IMU_Completa_DMA(&ax, &ay, &az, &gx, &gy, &gz) == HAL_OK) {
-
-	                // 3. CÁLCULO DE ÁNGULOS (Acelerómetro)
-	                float accel_pitch = atan2f(ay, az) * 57.2958f;
-	                float accel_roll  = atan2f(-ax, sqrtf(ay*ay + az*az)) * 57.2958f;
-
-	                // 4. FILTRO COMPLEMENTARIO (Fusión)
-	                pitch = 0.98f * (pitch + gx * dt) + 0.02f * accel_pitch;
-	                roll  = 0.98f * (roll + gy * dt) + 0.02f * accel_roll;
-
-	                // 5. CARGAR DATOS PARA TELEMETRÍA
-	                datos_nuevos.pitch = pitch;
-	                datos_nuevos.roll  = roll;
-	                datos_nuevos.z     = gz; // El Yaw se queda en DPS por ahora
-
-	                osMessageQueuePut(IMU_QueueHandle, &datos_nuevos, 0, 0);
-	            }
-
-	            osMutexRelease(I2C2_MutexHandle);
-	        }
-	        osDelay(10);
+	  /* Infinite loop */
+	  for(;;)
+	  {
+	    // 2. Leer Sensor (Pasamos las direcciones de las globales con &)
+	    if (osMutexAcquire(I2C2_MutexHandle, 10) == osOK) {
+	      Leer_IMU_Completa_DMA(&ax, &ay, &az, &gx, &gy, &gz);
+	      osMutexRelease(I2C2_MutexHandle);
 	    }
+
+	    // 3. MATEMÁTICA: Ángulos del acelerómetro
+	    // Necesitás <math.h> (ya viene con atan2f y sqrtf)
+	    float acc_p = atan2f(ay, az) * 57.2958f;
+	    float acc_r = atan2f(-ax, sqrtf(ay * ay + az * az)) * 57.2958f;
+
+	    // 4. FILTRO COMPLEMENTARIO (Fusión)
+	    pitch = 0.98f * (pitch + gy * dt) + 0.02f * (acc_p);
+	    roll  = 0.98f * (roll + gx * dt) + 0.02f * (acc_r);
+
+	    // 5. CARGAR DATOS PARA ENVIAR (Usamos tu estructura IMU_Data_t)
+	    datos_nuevos.pitch = pitch;
+	    datos_nuevos.roll  = roll;
+
+	    // Calculamos los PID y guardamos en la estructura
+	    datos_nuevos.outP = PID_Compute(&pidPitch, 0.0f, pitch, dt);
+	    datos_nuevos.outR = PID_Compute(&pidRoll,  0.0f, roll,  dt);
+	    datos_nuevos.outY = PID_Compute(&pidYaw,   0.0f, gz,    dt); // Yaw usa gz directamente
+
+	    // 6. ENVIAR A LA COLA
+	    osMessageQueuePut(IMU_QueueHandle, &datos_nuevos, 0, 0);
+
+	    HAL_GPIO_TogglePin(GPIOB, LED2_Pin); // Usá el nombre del LED de tu .ioc
+	    osDelay(10);
+	  }
 
   /* USER CODE END StartIMU_Task */
 }
@@ -1064,33 +1126,26 @@ void StartTelemetry_Task(void *argument)
 {
   /* USER CODE BEGIN StartTelemetry_Task */
 
-	IMU_Data_t imu_data;
-	float altitud_data;
-	uint16_t contador_visual = 0;
+	IMU_Data_t imu_data_local;
+	  float alt_local = 0;
+	  uint16_t count = 0;
 
-	for(;;) {
-	    // 1. Recolectar datos de las colas
-	    // Usamos osWaitForever o un pequeño timeout para no procesar basura si la cola está vacía
-	    osMessageQueueGet(IMU_QueueHandle, &imu_data, NULL, 10);
-	    osMessageQueueGet(AltitudQueueHandle, &altitud_data, NULL, 10);
+	  for(;;)
+	  {
+	    // Leemos sin bloquear (0 timeout)
+	    osMessageQueueGet(IMU_QueueHandle, &imu_data_local, NULL, 0);
+	    osMessageQueueGet(AltitudQueueHandle, &alt_local, NULL, 0);
 
-	    contador_visual++;
-
-	    // 2. ACTUALIZACIÓN DE PANTALLA
-	    // Bajé el contador a 20 (aprox. 5 veces por segundo) para que sea más fluido ver los ángulos
-	    if (contador_visual >= 20) {
-
-	        // Cambiamos [IMU DPS] por [ACTITUD] porque ahora son ángulos (Pitch/Roll)
-	        // El eje Z (Yaw) sigue siendo DPS (velocidad de rotación)
-	        printf("\r[ACTITUD] P:%7.2f R:%7.2f Yaw:%7.2f | [ALT] %7.2f m      ",
-	               imu_data.pitch, imu_data.roll, imu_data.z, altitud_data);
-
-	        fflush(stdout);
-	        contador_visual = 0;
+	    if (++count >= 20) {
+	      printf("\r[ANG] P:%6.1f R:%6.1f | [PID] P:%7.1f R:%7.1f Y:%7.1f | [ALT] %6.2f",
+	             imu_data_local.pitch, imu_data_local.roll,
+	             imu_data_local.outP, imu_data_local.outR, imu_data_local.outY,
+	             alt_local);
+	      fflush(stdout);
+	      count = 0;
 	    }
-
 	    osDelay(10);
-	}
+	  }
 
   /* USER CODE END StartTelemetry_Task */
 }
